@@ -26,6 +26,16 @@
   <!-- Ambient Web3 Light Mesh Canvas -->
   <canvas id="ambientCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
 
+  <!-- Three.js 3D WebGL Spatial Hero Monolith Canvas (Sites3D Pack Prompt 1) -->
+  <canvas id="heroThreeCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- CINEMATIC 3D DEMO OVERLAY BANNER (Prompt 9: Social Media Screen Recording) -->
+  <div id="demoModeBanner" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-obsidian/95 text-white backdrop-blur-md border border-cobalt/40 px-5 py-2.5 rounded-full font-mono text-xs shadow-2xl flex items-center gap-3 opacity-0 pointer-events-none transition-all duration-300">
+    <span class="w-2.5 h-2.5 rounded-full bg-cobalt animate-ping"></span>
+    <span class="font-bold tracking-wider">3D DEMO RUNNING // SCREEN-RECORD READY</span>
+    <button id="exitDemoBtn" class="px-2.5 py-1 rounded-md bg-white/20 hover:bg-white/30 text-[10px] font-bold uppercase transition-colors">EXIT [ESC]</button>
+  </div>
+
   <!-- NAVIGATION HEADER -->
   <header class="fixed top-0 left-0 right-0 z-40 bg-pearl/85 backdrop-blur-md border-b border-obsidian/10 transition-all duration-300" id="mainHeader">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -47,6 +57,7 @@
         <a href="#about" class="nav-link text-obsidian/70 hover:text-cobalt transition-colors duration-200">About</a>
         <a href="#experience" class="nav-link text-obsidian/70 hover:text-cobalt transition-colors duration-200">Track Record</a>
         <a href="#services" class="nav-link text-obsidian/70 hover:text-cobalt transition-colors duration-200">Services</a>
+        <a href="#playground" class="nav-link text-obsidian/70 hover:text-cobalt transition-colors duration-200">3D Matrix</a>
         <a href="#media" class="nav-link text-obsidian/70 hover:text-cobalt transition-colors duration-200">Media Lab</a>
         <a href="#framework" class="nav-link text-obsidian/70 hover:text-cobalt transition-colors duration-200">Framework</a>
         <a href="#audience" class="nav-link text-obsidian/70 hover:text-cobalt transition-colors duration-200">Audience</a>
@@ -54,6 +65,12 @@
 
       <!-- Desktop Action Bar -->
       <div class="hidden sm:flex items-center gap-3.5">
+        <!-- 3D Demo Mode Trigger (Sites3D Pack Prompt 9) -->
+        <button id="demoModeToggle" class="px-3.5 py-2 rounded-xl border border-cobalt/30 bg-cobalt/5 hover:bg-cobalt text-cobalt hover:text-white transition-all duration-200 text-xs font-mono font-bold flex items-center gap-1.5 group shadow-sm" title="Launch 3D Cinematic Auto-Tour (Social Media &amp; Screen Recording)">
+          <svg class="w-3.5 h-3.5 text-cobalt group-hover:text-white group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <span class="text-[11px] uppercase tracking-wider">3D Demo</span>
+        </button>
+
         <!-- Audio Feedback Toggle -->
         <button id="sfxToggle" class="px-3 py-2 rounded-xl border border-obsidian/15 bg-white hover:border-cobalt transition-all duration-200 text-xs font-mono flex items-center gap-2 group" title="Toggle Synthesized Web Audio">
           <svg class="w-3.5 h-3.5 text-cobalt group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
@@ -75,7 +92,7 @@
     </div>
 
     <!-- Mobile Drawer Menu -->
-    <div id="mobileDrawer" class="hidden lg:hidden border-b border-obsidian/10 bg-pearl px-6 py-6 space-y-4 font-mono text-xs uppercase tracking-wider font-semibold">
+    <div id="mobileDrawer" class="hidden lg:hidden border-b border-obsidian/10 bg-pearl px-6 py-6 space-y-3 font-mono text-xs uppercase tracking-wider font-semibold">
       <a href="#about" class="block py-2 text-obsidian/80 hover:text-cobalt border-b border-obsidian/5 flex items-center justify-between">
         <span>01 // About</span>
         <svg class="w-3.5 h-3.5 text-cobalt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
@@ -88,18 +105,26 @@
         <span>03 // Services</span>
         <svg class="w-3.5 h-3.5 text-cobalt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
       </a>
+      <a href="#playground" class="block py-2 text-obsidian/80 hover:text-cobalt border-b border-obsidian/5 flex items-center justify-between">
+        <span>04 // 3D Matrix Playground</span>
+        <svg class="w-3.5 h-3.5 text-cobalt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </a>
       <a href="#media" class="block py-2 text-obsidian/80 hover:text-cobalt border-b border-obsidian/5 flex items-center justify-between">
-        <span>04 // Media Lab</span>
+        <span>05 // Media Lab</span>
         <svg class="w-3.5 h-3.5 text-cobalt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
       </a>
       <a href="#framework" class="block py-2 text-obsidian/80 hover:text-cobalt border-b border-obsidian/5 flex items-center justify-between">
-        <span>05 // Framework</span>
+        <span>06 // Framework</span>
         <svg class="w-3.5 h-3.5 text-cobalt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
       </a>
       <a href="#audience" class="block py-2 text-obsidian/80 hover:text-cobalt border-b border-obsidian/5 flex items-center justify-between">
-        <span>06 // Audience</span>
+        <span>07 // Audience</span>
         <svg class="w-3.5 h-3.5 text-cobalt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
       </a>
+      <button id="mobileDemoBtn" class="w-full py-2.5 rounded-xl border border-cobalt/30 bg-cobalt/10 text-cobalt font-bold uppercase flex items-center justify-center gap-2">
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        <span>Launch 3D Demo Mode</span>
+      </button>
       <a href="#contact" class="block py-2.5 mt-2 text-center rounded-xl bg-obsidian text-white uppercase font-bold">
         <span>Transmit Brief</span>
       </a>
@@ -636,6 +661,98 @@
               <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cobalt"></span> Kaito Mindshare Optimization</li>
               <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cobalt"></span> InfoFi Distribution Tactics</li>
             </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SECTION 4: INTERACTIVE 3D WEB3 PROTOCOL PLAYGROUND (Sites3D Pack Studio Grade)
+         Inspired by prompt 4: Soft jelly 3D objects that wobble, drag, and fling
+         ======================================================================= -->
+    <section id="playground" class="py-16 sm:py-24 bg-pearl border-b border-obsidian/10 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-4 reveal-init">
+          <div>
+            <div class="font-mono text-xs uppercase tracking-widest text-cobalt font-bold mb-2">04 // Tactile 3D Matrix</div>
+            <h2 class="font-syne font-bold text-3xl sm:text-5xl text-obsidian">3D Protocol Playground</h2>
+          </div>
+          <div class="max-w-md font-sans text-xs sm:text-sm text-obsidian/70">
+            Interactive 3D geometric tokens of Nadim's ecosystem partners. Drag, fling, inspect, and trigger soft jelly wobble physics in real-time WebGL.
+          </div>
+        </div>
+
+        <!-- 3D Playground Stage Container -->
+        <div class="rounded-3xl bg-white border border-obsidian/15 shadow-xl overflow-hidden relative reveal-init">
+          
+          <!-- Playground Top Toolbar -->
+          <div class="px-4 py-3 sm:px-6 sm:py-4 border-b border-obsidian/10 flex flex-wrap items-center justify-between gap-3 bg-pearl/60">
+            
+            <!-- Left: Active Mode Pill & Status -->
+            <div class="flex items-center gap-2.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-cobalt animate-pulse"></span>
+              <span class="font-mono text-xs font-bold uppercase text-obsidian tracking-wider" id="playgroundStatusText">MODE: 3D DRAG &amp; FLING</span>
+            </div>
+
+            <!-- Center/Right: Interactive Mode Switchers -->
+            <div class="flex items-center gap-1.5 font-mono text-[11px] overflow-x-auto no-scrollbar">
+              <button id="btnModeDrag" class="playground-mode-btn px-3 py-1.5 rounded-xl bg-cobalt text-white font-bold transition-all shadow-sm shrink-0 active" data-mode="drag">
+                Drag &amp; Fling
+              </button>
+              <button id="btnModeWobble" class="playground-mode-btn px-3 py-1.5 rounded-xl bg-white border border-obsidian/15 text-obsidian/70 hover:text-cobalt hover:border-cobalt font-semibold transition-all shrink-0" data-mode="wobble">
+                Jelly Wobble
+              </button>
+              <button id="btnModeOrbit" class="playground-mode-btn px-3 py-1.5 rounded-xl bg-white border border-obsidian/15 text-obsidian/70 hover:text-cobalt hover:border-cobalt font-semibold transition-all shrink-0" data-mode="orbit">
+                Orbit Matrix
+              </button>
+              <button id="btnResetPlayground" class="px-3 py-1.5 rounded-xl bg-white border border-obsidian/15 text-obsidian hover:text-cobalt hover:border-cobalt font-bold transition-all shrink-0" title="Reset all 3D tokens to showroom grid">
+                Reset
+              </button>
+            </div>
+
+          </div>
+
+          <!-- 3D Canvas Stage -->
+          <div class="relative w-full h-[360px] sm:h-[460px] lg:h-[500px] bg-gradient-to-b from-[#F8FAFC] to-[#EDF2F7] cursor-grab active:cursor-grabbing overflow-hidden" id="playgroundStage">
+            <canvas id="playgroundCanvas" class="w-full h-full block"></canvas>
+            
+            <!-- Floating 3D Watermark & Instruction Pill -->
+            <div class="absolute top-4 left-4 pointer-events-none bg-white/90 backdrop-blur-md border border-obsidian/10 rounded-xl px-3 py-1.5 shadow-sm flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-cobalt"></span>
+              <span class="font-mono text-[10px] uppercase font-bold text-obsidian/80">Touch &amp; Drag Any 3D Token</span>
+            </div>
+
+            <!-- 3D Token Telemetry Card (Pops up when token is selected/dragged) -->
+            <div id="tokenTelemetryHUD" class="absolute bottom-4 left-4 right-4 sm:left-6 sm:right-auto sm:max-w-md bg-obsidian/95 text-white backdrop-blur-md rounded-2xl p-4 border border-cobalt/30 shadow-2xl transition-all duration-300">
+              <div class="flex items-center justify-between gap-3 pb-2 border-b border-white/10">
+                <div class="flex items-center gap-2">
+                  <span id="hudTokenColor" class="w-3 h-3 rounded-full bg-cobalt"></span>
+                  <span id="hudTokenTitle" class="font-syne font-black text-sm uppercase text-white tracking-wide">MONAD PROTOCOL</span>
+                </div>
+                <span id="hudTokenCategory" class="font-mono text-[10px] px-2 py-0.5 rounded bg-cobalt text-white font-bold uppercase">10,000 TPS EVM</span>
+              </div>
+              <p id="hudTokenDesc" class="font-mono text-[11px] text-white/80 pt-2 leading-relaxed">
+                Nadim is an exclusive launch partner executing viral narrative architecture and KOL alignment for Monad's parallelized EVM ecosystem.
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Bottom Protocol Selector Chips -->
+          <div class="px-4 py-3 sm:px-6 sm:py-3.5 border-t border-obsidian/10 bg-white flex items-center justify-between gap-2 overflow-x-auto no-scrollbar">
+            <span class="font-mono text-[10px] uppercase text-obsidian/50 font-bold shrink-0 hidden sm:inline">Inspect:</span>
+            <div class="flex items-center gap-2 shrink-0">
+              <button class="token-select-pill px-3 py-1 rounded-lg bg-cobalt/10 text-cobalt font-mono text-[11px] font-bold border border-cobalt/30 hover:bg-cobalt hover:text-white transition-colors" data-token="0">Monad</button>
+              <button class="token-select-pill px-3 py-1 rounded-lg bg-pearl text-obsidian/70 font-mono text-[11px] font-semibold border border-obsidian/10 hover:border-cobalt hover:text-cobalt transition-colors" data-token="1">Injective</button>
+              <button class="token-select-pill px-3 py-1 rounded-lg bg-pearl text-obsidian/70 font-mono text-[11px] font-semibold border border-obsidian/10 hover:border-cobalt hover:text-cobalt transition-colors" data-token="2">exSat BTC</button>
+              <button class="token-select-pill px-3 py-1 rounded-lg bg-pearl text-obsidian/70 font-mono text-[11px] font-semibold border border-obsidian/10 hover:border-cobalt hover:text-cobalt transition-colors" data-token="3">Solana</button>
+              <button class="token-select-pill px-3 py-1 rounded-lg bg-pearl text-obsidian/70 font-mono text-[11px] font-semibold border border-obsidian/10 hover:border-cobalt hover:text-cobalt transition-colors" data-token="4">Base L2</button>
+            </div>
+            <span class="font-mono text-[10px] text-obsidian/50 shrink-0 hidden md:inline">WebGL 3D Accelerated • 60 FPS</span>
           </div>
 
         </div>
@@ -1183,6 +1300,9 @@
       <span class="block font-mono text-[9px] uppercase tracking-wider text-obsidian/50 font-semibold" id="companionStatus">Radar Active</span>
       <span class="block font-syne font-bold text-xs text-obsidian">Sentinel AI</span>
     </div>
+    <button id="dockDemoBtn" class="px-3 py-1.5 rounded-full border border-cobalt/30 bg-cobalt/10 text-cobalt hover:bg-cobalt hover:text-white font-mono text-[10px] font-bold uppercase transition-colors" title="Launch 3D Cinematic Demo Mode">
+      3D Demo
+    </button>
     <a href="#contact" class="px-3.5 py-1.5 rounded-full bg-obsidian text-white font-mono text-[10px] font-semibold uppercase hover:bg-cobalt transition-colors">
       Connect
     </a>
@@ -1194,6 +1314,7 @@
     <span id="toastMessage">Copied to clipboard!</span>
   </div>
 
-  <script src="script.js?v=23"></script>
+  <script src="three.min.js"></script>
+  <script src="script.js?v=24"></script>
 </body>
 </html>
