@@ -454,9 +454,14 @@ document.addEventListener('DOMContentLoaded', () => {
         obs.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  }, { threshold: 0.05, rootMargin: '40px 0px 40px 0px' });
 
   revealElements.forEach(el => revealObserver.observe(el));
+
+  // Automatically reveal hero elements immediately so above-the-fold content is instantly visible
+  document.querySelectorAll('#hero .reveal-init, #portraitCardTarget, #mascotPodCard').forEach(el => {
+    el.classList.add('reveal-visible');
+  });
 
 
   /* ==========================================================================

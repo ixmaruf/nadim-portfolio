@@ -1,3 +1,45 @@
+
+/* Hero Immediate Visibility Guarantee (Zero Above-The-Fold Opacity Lag) */
+#hero .reveal-init,
+#portraitCardTarget,
+#mascotPodCard,
+#hero h1,
+#hero p {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+
+/* ==========================================================================
+   MOBILE HARDENING & ANTI-CLIPPING RULES (320px - 768px PERFECT RESPONSIVENESS)
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, p, span, a, label, li, button, td, th {
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+}
+
+/* On mobile, neutralize 220% sheen overlays & preserve-3d to eliminate horizontal stretching */
+@media (max-width: 768px) {
+  .card-sheen::after,
+  .growth-card::after,
+  .service-card::after,
+  .eco-card::after,
+  .media-card::after {
+    display: none !important;
+  }
+  .card-3d {
+    transform: none !important;
+    transform-style: flat !important;
+  }
+  body::before {
+    width: 100% !important;
+  }
+}
+
 /* ==========================================================================
    GLOBAL LAYOUT HARDENING (ZERO HORIZONTAL OVERFLOW & FULL RESPONSIVENESS)
    ========================================================================== */
@@ -680,4 +722,26 @@ body::before {
 
 @media (min-width: 1280px) {
   .xl\:text-7xl { font-size: 4.5rem !important; line-height: 1 !important; }
+}
+
+/* Utility additions for responsive padding & display */
+.pt-20 { padding-top: 5rem !important; }
+.pt-24 { padding-top: 6rem !important; }
+.pt-28 { padding-top: 7rem !important; }
+.pt-32 { padding-top: 8rem !important; }
+.pt-36 { padding-top: 9rem !important; }
+
+@media (min-width: 640px) {
+  .sm\:hidden { display: none !important; }
+  .sm\:block { display: block !important; }
+  .sm\:inline { display: inline !important; }
+  .sm\:inline-flex { display: inline-flex !important; }
+  .sm\:flex { display: flex !important; }
+  .sm\:pt-28 { padding-top: 7rem !important; }
+  .sm\:pt-32 { padding-top: 8rem !important; }
+}
+
+@media (min-width: 1024px) {
+  .lg\:pt-28 { padding-top: 7rem !important; }
+  .lg\:pt-32 { padding-top: 8rem !important; }
 }
