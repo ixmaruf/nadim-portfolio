@@ -178,32 +178,40 @@
           <div class="lg:col-span-5 space-y-6">
             
             <!-- Bento Card 1: Nadim Nabil (Real Photo) Executive Editorial Card -->
-            <div id="portraitCardTarget" class="relative w-full rounded-3xl p-3 bg-white border border-obsidian/15 shadow-xl group transition-all duration-300 hover:border-cobalt/40 card-sheen reveal-init stagger-2">
+            <div id="portraitCardTarget" class="relative w-full rounded-3xl p-3 sm:p-4 bg-white border border-obsidian/15 shadow-xl group transition-all duration-300 hover:border-cobalt/40 card-sheen reveal-init stagger-2">
               
-              <div class="relative w-full h-[380px] sm:h-[420px] rounded-2xl overflow-hidden bg-pearl">
+              <!-- Clean Real Portrait Image Container (Immune to Overlap/Clipping) -->
+              <div class="relative w-full h-[290px] sm:h-[380px] lg:h-[400px] rounded-2xl overflow-hidden bg-pearl">
                 <img src="nadim_portrait.jpg" alt="Al Nadim Nabil - Web3 Growth Partner" class="w-full h-full object-cover object-top filter contrast-[1.02] transition-transform duration-700 group-hover:scale-105">
                 
-                <!-- Editorial Vignette Overlay -->
-                <div class="absolute inset-0 bg-gradient-to-t from-obsidian/85 via-obsidian/20 to-transparent"></div>
+                <!-- Subtle Gradient Depth Vignette at Edges -->
+                <div class="absolute inset-0 bg-gradient-to-t from-obsidian/60 via-transparent to-transparent pointer-events-none"></div>
 
                 <!-- Verified Badge -->
-                <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-md border border-obsidian/15 rounded-xl px-3 py-1.5 shadow-sm flex items-center gap-2">
+                <div class="absolute top-3 left-3 sm:top-4 sm:left-4 bg-white/95 backdrop-blur-md border border-obsidian/15 rounded-xl px-2.5 py-1.5 sm:px-3 sm:py-1.5 shadow-sm flex items-center gap-2">
                   <span class="w-2.5 h-2.5 rounded-full bg-cobalt"></span>
-                  <span class="font-mono text-[11px] font-bold uppercase text-obsidian">Verified Growth Partner</span>
+                  <span class="font-mono text-[10px] sm:text-[11px] font-bold uppercase text-obsidian tracking-wider">Verified Growth Partner</span>
                 </div>
 
-                <!-- Bottom Metadata Strip -->
-                <div class="absolute bottom-4 left-3 right-3 sm:left-4 sm:right-4 text-white space-y-1">
-                  <div class="flex items-center justify-between gap-1">
-                    <span class="font-syne font-black text-lg sm:text-xl text-white">AL NADIM NABIL</span>
-                    <span class="font-mono text-[9px] sm:text-[10px] bg-cobalt text-white px-2 py-0.5 rounded font-bold uppercase flex-shrink-0">Executive Lead</span>
-                  </div>
-                  <p class="font-mono text-[10px] sm:text-[11px] text-white/80 leading-snug break-words">
-                    Content Creator • Community Builder • Media Producer
-                  </p>
-                  <p class="font-mono text-[9px] sm:text-[10px] text-white/60 pt-0.5 leading-snug break-words">
-                    Bangladesh • Operating Across All Global Web3 Timezones
-                  </p>
+                <!-- Global Availability Indicator -->
+                <div class="absolute top-3 right-3 sm:top-4 sm:right-4 bg-obsidian/85 backdrop-blur-md text-white rounded-xl px-2.5 py-1 text-[9px] sm:text-[10px] font-mono font-bold flex items-center gap-1.5 shadow-sm">
+                  <span class="w-2 h-2 rounded-full bg-cobalt animate-pulse"></span>
+                  <span>ACTIVE</span>
+                </div>
+              </div>
+
+              <!-- Executive Metadata Compartment (Below Photo — Zero Clipping on Any Screen) -->
+              <div class="pt-3.5 pb-1 px-1 sm:px-2 space-y-2">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="font-syne font-black text-lg sm:text-xl text-obsidian tracking-tight">AL NADIM NABIL</span>
+                  <span class="font-mono text-[9px] sm:text-[10px] bg-cobalt text-white px-2.5 py-0.5 rounded-md font-bold uppercase tracking-wider shrink-0">Executive Lead</span>
+                </div>
+                <div class="font-mono text-[11px] sm:text-xs text-obsidian/85 font-medium leading-snug">
+                  Content Creator <span class="text-cobalt">•</span> Community Builder <span class="text-cobalt">•</span> Media Producer
+                </div>
+                <div class="flex items-center gap-1.5 font-mono text-[10px] sm:text-[11px] text-obsidian/60 pt-1 border-t border-obsidian/10">
+                  <span class="w-2 h-2 rounded-full bg-cobalt shrink-0"></span>
+                  <span class="truncate">Bangladesh • Operating Across All Global Web3 Timezones</span>
                 </div>
               </div>
 
@@ -656,76 +664,77 @@
         <div class="mb-12 rounded-3xl bg-obsidian text-white p-4 sm:p-8 border border-cobalt/30 shadow-2xl overflow-hidden relative reveal-init">
           
           <!-- Studio Header Bar -->
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-white/10 gap-3">
-            <div class="flex items-center gap-3">
-              <span class="relative flex h-2.5 w-2.5">
+          <!-- Studio Header Bar -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 sm:pb-4 border-b border-white/10 gap-2.5 sm:gap-3">
+            <div class="flex items-center gap-2.5">
+              <span class="relative flex h-2.5 w-2.5 shrink-0">
                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cobalt opacity-75"></span>
                 <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cobalt"></span>
               </span>
-              <span class="font-mono text-xs uppercase font-bold tracking-widest text-cobalt">CREATIVE MOTION LAB // 60FPS CODE-DRAWN REEL</span>
+              <span class="font-mono text-[11px] sm:text-xs uppercase font-bold tracking-wider sm:tracking-widest text-cobalt truncate">CREATIVE MOTION LAB // 60FPS REEL</span>
             </div>
             
-            <!-- Scene Selectors -->
-            <div class="flex items-center gap-1.5 font-mono text-[11px] overflow-x-auto max-w-full pb-1 sm:pb-0">
-              <button class="scene-tab-btn px-2.5 py-1 rounded-lg bg-cobalt text-white font-semibold transition-colors active shrink-0" data-scene="0">01 // Launch Teaser</button>
-              <button class="scene-tab-btn px-2.5 py-1 rounded-lg bg-white/10 hover:bg-cobalt text-white/70 font-semibold transition-colors shrink-0" data-scene="1">02 // Network Flow</button>
-              <button class="scene-tab-btn px-2.5 py-1 rounded-lg bg-white/10 hover:bg-cobalt text-white/70 font-semibold transition-colors shrink-0" data-scene="2">03 // Mindshare Surge</button>
-              <button class="scene-tab-btn px-2.5 py-1 rounded-lg bg-white/10 hover:bg-cobalt text-white/70 font-semibold transition-colors shrink-0" data-scene="3">04 // AI Sentinel Engine</button>
+            <!-- Scene Selectors (Smooth touch scroll with no scrollbar) -->
+            <div class="flex items-center gap-1.5 font-mono text-[10px] sm:text-[11px] overflow-x-auto max-w-full pb-1 sm:pb-0 no-scrollbar">
+              <button class="scene-tab-btn px-2.5 py-1.5 rounded-lg bg-cobalt text-white font-semibold transition-colors active shrink-0" data-scene="0"><span class="sm:hidden">01 // Teaser</span><span class="hidden sm:inline">01 // Launch Teaser</span></button>
+              <button class="scene-tab-btn px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-cobalt text-white/70 font-semibold transition-colors shrink-0" data-scene="1"><span class="sm:hidden">02 // Network</span><span class="hidden sm:inline">02 // Network Flow</span></button>
+              <button class="scene-tab-btn px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-cobalt text-white/70 font-semibold transition-colors shrink-0" data-scene="2"><span class="sm:hidden">03 // Mindshare</span><span class="hidden sm:inline">03 // Mindshare Surge</span></button>
+              <button class="scene-tab-btn px-2.5 py-1.5 rounded-lg bg-white/10 hover:bg-cobalt text-white/70 font-semibold transition-colors shrink-0" data-scene="3"><span class="sm:hidden">04 // Sentinel</span><span class="hidden sm:inline">04 // AI Sentinel Engine</span></button>
             </div>
           </div>
 
           <!-- 16:9 Motion Graphics Canvas Stage -->
-          <div class="relative w-full aspect-video sm:h-[380px] bg-[#070A11] rounded-2xl overflow-hidden mt-4 border border-white/10 flex items-center justify-center">
+          <div class="relative w-full aspect-video sm:h-[400px] min-h-[200px] bg-[#070A11] rounded-2xl overflow-hidden mt-3 sm:mt-4 border border-white/10 flex items-center justify-center">
             <canvas id="motionStudioCanvas" class="w-full h-full object-contain"></canvas>
             
             <!-- Live Overlay Watermark -->
-            <div class="absolute top-3 left-3 sm:top-4 sm:left-4 font-mono text-[9px] sm:text-[10px] text-white/50 tracking-widest uppercase pointer-events-none">
+            <div class="absolute top-2.5 left-2.5 sm:top-4 sm:left-4 font-mono text-[9px] sm:text-[10px] text-white/50 tracking-widest uppercase pointer-events-none">
               <span class="hidden sm:inline">AL NADIM NABIL • CREATIVE MOTION STUDIO</span>
-              <span class="sm:hidden">MOTION STUDIO</span>
+              <span class="sm:hidden">MOTION STUDIO // 60FPS</span>
             </div>
 
             <!-- Active FPS & Resolution Badge -->
-            <div class="absolute top-3 right-3 sm:top-4 sm:right-4 flex items-center gap-1.5 sm:gap-2 pointer-events-none">
-              <span class="font-mono text-[9px] px-2 py-0.5 rounded bg-cobalt text-white font-bold uppercase">60 FPS</span>
+            <div class="absolute top-2.5 right-2.5 sm:top-4 sm:right-4 flex items-center gap-1.5 sm:gap-2 pointer-events-none">
+              <span class="font-mono text-[8px] sm:text-[9px] px-2 py-0.5 rounded bg-cobalt text-white font-bold uppercase">60 FPS</span>
               <span class="hidden sm:inline font-mono text-[9px] px-2 py-0.5 rounded bg-white/10 text-white/80 font-bold uppercase">4K VECTOR MATRIX</span>
             </div>
           </div>
 
           <!-- Studio Timeline Controls -->
-          <div class="mt-4 flex flex-col sm:flex-row items-center justify-between gap-4 pt-3 border-t border-white/10">
-            <div class="flex items-center gap-3 w-full sm:w-auto">
+          <div class="mt-3 sm:mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 pt-3 border-t border-white/10">
+            <div class="flex flex-wrap items-center justify-between sm:justify-start gap-2 w-full sm:w-auto">
               <!-- Play / Pause Button -->
-              <button id="studioPlayPauseBtn" class="px-4 py-2 rounded-xl bg-cobalt text-white font-mono text-xs font-bold uppercase flex items-center gap-2 hover:bg-cobalt/80 transition-colors">
+              <button id="studioPlayPauseBtn" class="px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl bg-cobalt text-white font-mono text-[11px] sm:text-xs font-bold uppercase flex items-center gap-1.5 sm:gap-2 hover:bg-cobalt/80 transition-colors">
                 <svg id="playIcon" class="w-3.5 h-3.5 hidden" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                 <svg id="pauseIcon" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
                 <span id="playStatusText">PAUSE</span>
               </button>
 
               <!-- Generative Synth Audio Toggle Button -->
-              <button id="studioAudioToggleBtn" class="px-3 py-2 rounded-xl bg-white/10 text-white/80 hover:text-white font-mono text-xs font-bold uppercase flex items-center gap-1.5 border border-white/10 transition-colors" title="Toggle 100% Code-Synthesized Ambient Web3 Audio">
+              <button id="studioAudioToggleBtn" class="px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl bg-white/10 text-white/80 hover:text-white font-mono text-[11px] sm:text-xs font-bold uppercase flex items-center gap-1.5 border border-white/10 transition-colors" title="Toggle 100% Code-Synthesized Ambient Web3 Audio">
                 <svg id="soundOffIcon" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
                 <svg id="soundOnIcon" class="w-3.5 h-3.5 hidden text-cobalt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
                 <span id="soundStatusText">SYNTH: OFF</span>
               </button>
 
               <!-- Speed Selector -->
-              <div class="flex items-center gap-1 font-mono text-[10px] bg-white/10 p-1 rounded-lg">
-                <button class="speed-btn px-2 py-1 rounded bg-cobalt text-white font-bold" data-speed="1.0">1.0x</button>
-                <button class="speed-btn px-2 py-1 rounded text-white/70 hover:text-white" data-speed="1.5">1.5x</button>
-                <button class="speed-btn px-2 py-1 rounded text-white/70 hover:text-white" data-speed="2.0">2.0x</button>
+              <div class="flex items-center gap-1 font-mono text-[9px] sm:text-[10px] bg-white/10 p-1 rounded-lg">
+                <button class="speed-btn px-1.5 sm:px-2 py-0.5 sm:py-1 rounded bg-cobalt text-white font-bold" data-speed="1.0">1.0x</button>
+                <button class="speed-btn px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-white/70 hover:text-white" data-speed="1.5">1.5x</button>
+                <button class="speed-btn px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-white/70 hover:text-white" data-speed="2.0">2.0x</button>
               </div>
             </div>
 
             <!-- Timeline Scrubber & Fullscreen Toggle -->
-            <div class="flex items-center gap-3 w-full sm:flex-1 max-w-md">
-              <span class="font-mono text-[10px] text-white/50" id="studioCurrentTime">00:00</span>
+            <div class="flex items-center gap-2 sm:gap-3 w-full sm:flex-1 max-w-md pt-1 sm:pt-0">
+              <span class="font-mono text-[9px] sm:text-[10px] text-white/50 shrink-0" id="studioCurrentTime">00:00</span>
               <div class="relative w-full h-2 bg-white/10 rounded-full overflow-hidden cursor-pointer" id="timelineScrubber">
                 <div id="timelineProgress" class="h-full bg-cobalt transition-all duration-75" style="width: 0%;"></div>
               </div>
-              <span class="font-mono text-[10px] text-white/50" id="studioTotalTime">00:19</span>
+              <span class="font-mono text-[9px] sm:text-[10px] text-white/50 shrink-0" id="studioTotalTime">00:19</span>
               
               <!-- Fullscreen Button -->
-              <button id="studioFullscreenBtn" class="p-1.5 rounded-lg bg-white/10 text-white/70 hover:text-white transition-colors" title="Toggle Fullscreen Stage">
+              <button id="studioFullscreenBtn" class="p-1.5 rounded-lg bg-white/10 text-white/70 hover:text-white transition-colors shrink-0" title="Toggle Fullscreen Stage">
                 <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
               </button>
             </div>
@@ -1148,9 +1157,14 @@
         © 2026 Al Nadim Nabil. All rights reserved.
       </div>
       <div>
-        <a href="https://marufix.xyz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white border border-obsidian/15 text-obsidian hover:text-cobalt hover:border-cobalt transition-all duration-300 shadow-sm group" title="Architected & Engineered by marufix.xyz">
-          <span class="w-5 h-5 rounded-md bg-obsidian text-white group-hover:bg-cobalt transition-colors flex items-center justify-center font-bold text-[10px] font-mono shadow-sm">M</span>
-          <span class="font-mono text-xs text-obsidian/70 group-hover:text-cobalt transition-colors">Built by <strong class="text-obsidian group-hover:text-cobalt font-semibold">marufix.xyz</strong></span>
+        <a href="https://marufix.xyz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white border border-obsidian/15 text-obsidian hover:text-cobalt hover:border-cobalt transition-all duration-300 shadow-sm hover:shadow-md group" title="Architected & Engineered by Maruf Hasan (marufix.xyz)">
+          <div class="relative w-6 h-6 rounded-full overflow-hidden border border-obsidian/20 shrink-0 group-hover:border-cobalt transition-colors bg-pearl">
+            <img src="maruf_profile.webp" alt="Maruf Hasan" class="w-full h-full object-cover">
+          </div>
+          <div class="font-mono text-xs flex items-center gap-1.5">
+            <span class="text-obsidian/60 group-hover:text-cobalt transition-colors">Built by</span>
+            <strong class="text-obsidian group-hover:text-cobalt font-bold tracking-tight">marufix.xyz</strong>
+          </div>
           <svg class="w-3.5 h-3.5 text-obsidian/40 group-hover:text-cobalt group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
         </a>
       </div>

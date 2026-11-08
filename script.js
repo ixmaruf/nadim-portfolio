@@ -384,8 +384,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function triggerMascotJump() {
+    if (mascotSprite) {
+      mascotSprite.style.transition = 'transform 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+      mascotSprite.style.transform = 'scale(1.2) translateY(-16px)';
+      setTimeout(() => {
+        mascotSprite.style.transform = '';
+        setTimeout(() => {
+          mascotSprite.style.transition = '';
+        }, 220);
+      }, 220);
+    }
+  }
+
   function triggerMascotScan() {
     playRadarPing();
+    triggerMascotJump();
 
     if (mascotScanBeam) {
       mascotScanBeam.classList.remove('scan-active');
@@ -811,6 +825,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const vH = 720;
     studioCanvas.width = vW;
     studioCanvas.height = vH;
+    sCtx.imageSmoothingEnabled = true;
+    sCtx.imageSmoothingQuality = 'high';
 
     let isPlaying = true;
     let playbackSpeed = 1.0;
@@ -904,26 +920,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3D Hexagon Matrix for Scene 0
     let hexRotX = 0;
-    let hexRotY = 0;
-
-    // Draw Function for Scene 0: Launch Teaser
+    let hexRotY = 0;    // Draw Function for Scene 0: Launch Teaser
     function drawSceneLaunchTeaser(f) {
       // Background Radial Ambient Glow
       const grad = sCtx.createRadialGradient(vW / 2, vH / 2, 50, vW / 2, vH / 2, vW * 0.65);
-      grad.addColorStop(0, 'rgba(37, 99, 235, 0.18)');
+      grad.addColorStop(0, 'rgba(37, 99, 235, 0.22)');
       grad.addColorStop(1, 'rgba(7, 10, 17, 1)');
       sCtx.fillStyle = grad;
       sCtx.fillRect(0, 0, vW, vH);
 
-      // Fast streaming hyperspace motion streaks
-      sCtx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
-      sCtx.lineWidth = 1;
+      // Fast streaming hyperspace motion streaks (crisp vector thickness)
+      sCtx.strokeStyle = 'rgba(255, 255, 255, 0.22)';
+      sCtx.lineWidth = 2.5;
       for (let i = 0; i < 28; i++) {
         const x = (i * 47 + f * 12) % vW;
         const y = (i * 31 + Math.sin(f * 0.05 + i) * 60) % vH;
         sCtx.beginPath();
         sCtx.moveTo(x, y);
-        sCtx.lineTo(x + 50, y);
+        sCtx.lineTo(x + 55, y);
         sCtx.stroke();
       }
 
@@ -947,9 +961,9 @@ document.addEventListener('DOMContentLoaded', () => {
         botPts.push({ x: hX + x, y: hY + yBot });
       }
 
-      // Draw 3D Hexagon Edges
+      // Draw 3D Hexagon Edges (Bold 4.5px stroke for crisp retina rendering)
       sCtx.strokeStyle = '#2563EB';
-      sCtx.lineWidth = 2.2;
+      sCtx.lineWidth = 4.5;
       sCtx.beginPath();
       for (let i = 0; i < corners; i++) {
         const next = (i + 1) % corners;
@@ -962,12 +976,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       sCtx.stroke();
 
-      // Glowing Vertices
+      // Glowing Vertices (Radius 7px)
       topPts.concat(botPts).forEach(pt => {
         sCtx.beginPath();
-        sCtx.arc(pt.x, pt.y, 4, 0, Math.PI * 2);
+        sCtx.arc(pt.x, pt.y, 7, 0, Math.PI * 2);
         sCtx.fillStyle = '#FFFFFF';
+        sCtx.shadowColor = '#2563EB';
+        sCtx.shadowBlur = 10;
         sCtx.fill();
+        sCtx.shadowBlur = 0;
       });
 
       // Kinetic Typography with Spring Scale
@@ -975,30 +992,30 @@ document.addEventListener('DOMContentLoaded', () => {
       const titleScale = 0.85 + Math.sin(springProg * Math.PI * 0.5) * 0.15;
       
       sCtx.save();
-      sCtx.translate(vW / 2, vH * 0.78);
+      sCtx.translate(vW / 2, vH * 0.77);
       sCtx.scale(titleScale, titleScale);
       
-      sCtx.font = '900 48px Syne, sans-serif';
+      sCtx.font = '900 58px Syne, sans-serif';
       sCtx.fillStyle = '#FFFFFF';
       sCtx.textAlign = 'center';
       sCtx.fillText("SCALING WEB3 PROTOCOLS", 0, 0);
 
-      sCtx.font = '600 20px "JetBrains Mono", monospace';
+      sCtx.font = '700 24px "JetBrains Mono", monospace';
       sCtx.fillStyle = '#2563EB';
-      sCtx.fillText("MONAD • INJECTIVE • EXSAT • SOLANA • BASE", 0, 36);
+      sCtx.fillText("MONAD • INJECTIVE • EXSAT • SOLANA • BASE", 0, 40);
       sCtx.restore();
 
-      // Audio Beat Visualizer at bottom
-      const bars = 32;
-      const barWidth = 14;
-      const barGap = 8;
+      // Audio Beat Visualizer at bottom (Bold 22 bars for solid, punchy visual)
+      const bars = 22;
+      const barWidth = 24;
+      const barGap = 12;
       const totalBarW = bars * (barWidth + barGap);
       const startX = (vW - totalBarW) / 2;
 
       for (let b = 0; b < bars; b++) {
-        const barH = Math.abs(Math.sin(f * 0.15 + b * 0.35)) * 48 + 8;
-        sCtx.fillStyle = b % 2 === 0 ? '#2563EB' : 'rgba(255, 255, 255, 0.7)';
-        sCtx.fillRect(startX + b * (barWidth + barGap), vH - 30 - barH, barWidth, barH);
+        const barH = Math.abs(Math.sin(f * 0.15 + b * 0.35)) * 48 + 10;
+        sCtx.fillStyle = b % 2 === 0 ? '#2563EB' : 'rgba(255, 255, 255, 0.75)';
+        sCtx.fillRect(startX + b * (barWidth + barGap), vH - 32 - barH, barWidth, barH);
       }
     }
 
@@ -1011,14 +1028,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const cX = vW / 2;
       const cY = vH / 2;
 
-      // Concentric Expanding Radar Waves
+      // Concentric Expanding Radar Waves (Bold 3px stroke)
       for (let w = 0; w < 3; w++) {
         const waveRadius = ((f * 3 + w * 110) % 360) + 40;
-        const waveAlpha = Math.max(0, 1 - waveRadius / 380) * 0.45;
+        const waveAlpha = Math.max(0, 1 - waveRadius / 380) * 0.55;
         sCtx.beginPath();
         sCtx.arc(cX, cY, waveRadius, 0, Math.PI * 2);
         sCtx.strokeStyle = `rgba(37, 99, 235, ${waveAlpha})`;
-        sCtx.lineWidth = 1.5;
+        sCtx.lineWidth = 3;
         sCtx.stroke();
       }
 
@@ -1037,62 +1054,62 @@ document.addEventListener('DOMContentLoaded', () => {
         const nx = cX + Math.cos(p.angle + f * 0.008) * orbitRadius;
         const ny = cY + Math.sin(p.angle + f * 0.008) * (orbitRadius * 0.75);
 
-        // Connection Beziers
+        // Connection Beziers (Bold 3px stroke)
         sCtx.beginPath();
         sCtx.moveTo(cX, cY);
         sCtx.quadraticCurveTo((cX + nx) / 2, (cY + ny) / 2 - 30, nx, ny);
-        sCtx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
-        sCtx.lineWidth = 1.5;
+        sCtx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+        sCtx.lineWidth = 3;
         sCtx.stroke();
 
-        // Streaming Packet
+        // Streaming Packet (Radius 8px)
         const packetT = ((f * 0.02 + idx * 0.2) % 1);
         const px = cX + (nx - cX) * packetT;
         const py = cY + (ny - cY) * packetT - Math.sin(packetT * Math.PI) * 30;
 
         sCtx.beginPath();
-        sCtx.arc(px, py, 5, 0, Math.PI * 2);
+        sCtx.arc(px, py, 8, 0, Math.PI * 2);
         sCtx.fillStyle = '#2563EB';
         sCtx.shadowColor = '#2563EB';
-        sCtx.shadowBlur = 10;
+        sCtx.shadowBlur = 12;
         sCtx.fill();
         sCtx.shadowBlur = 0;
 
-        // Node Circle
+        // Node Circle (Radius 36px, Line 3.5px)
         sCtx.beginPath();
-        sCtx.arc(nx, ny, 26, 0, Math.PI * 2);
-        sCtx.fillStyle = 'rgba(11, 15, 25, 0.9)';
+        sCtx.arc(nx, ny, 36, 0, Math.PI * 2);
+        sCtx.fillStyle = 'rgba(11, 15, 25, 0.95)';
         sCtx.fill();
         sCtx.strokeStyle = '#2563EB';
-        sCtx.lineWidth = 2;
+        sCtx.lineWidth = 3.5;
         sCtx.stroke();
 
-        // Label
-        sCtx.font = '700 13px "JetBrains Mono", monospace';
+        // Label (Clear 16px Mono)
+        sCtx.font = '800 16px "JetBrains Mono", monospace';
         sCtx.fillStyle = '#FFFFFF';
         sCtx.textAlign = 'center';
         sCtx.fillText(p.name, nx, ny + 5);
       });
 
-      // Center Hub Circle
+      // Center Hub Circle (Radius 54px, Line 4px)
       sCtx.beginPath();
-      sCtx.arc(cX, cY, 44, 0, Math.PI * 2);
+      sCtx.arc(cX, cY, 54, 0, Math.PI * 2);
       sCtx.fillStyle = '#2563EB';
       sCtx.fill();
       sCtx.strokeStyle = '#FFFFFF';
-      sCtx.lineWidth = 2.5;
+      sCtx.lineWidth = 4;
       sCtx.stroke();
 
-      sCtx.font = '800 14px Syne, sans-serif';
+      sCtx.font = '900 18px Syne, sans-serif';
       sCtx.fillStyle = '#FFFFFF';
       sCtx.textAlign = 'center';
-      sCtx.fillText("NADIM", cX, cY - 2);
-      sCtx.font = '700 10px "JetBrains Mono", monospace';
-      sCtx.fillText("ENGINE", cX, cY + 14);
+      sCtx.fillText("NADIM", cX, cY - 3);
+      sCtx.font = '800 13px "JetBrains Mono", monospace';
+      sCtx.fillText("ENGINE", cX, cY + 15);
 
       // Live Telemetry Banner
       const tps = Math.min(12480, Math.floor((f % 280) * 48 + 1200));
-      sCtx.font = '700 16px "JetBrains Mono", monospace';
+      sCtx.font = '700 20px "JetBrains Mono", monospace';
       sCtx.fillStyle = '#FFFFFF';
       sCtx.textAlign = 'center';
       sCtx.fillText(`ON-CHAIN VELOCITY: ${tps.toLocaleString()} TPS • FINALITY: 400MS`, vW / 2, vH - 45);
@@ -1103,9 +1120,9 @@ document.addEventListener('DOMContentLoaded', () => {
       sCtx.fillStyle = '#070A11';
       sCtx.fillRect(0, 0, vW, vH);
 
-      // Grid Lines
-      sCtx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
-      sCtx.lineWidth = 1;
+      // Grid Lines (Bold 2px)
+      sCtx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
+      sCtx.lineWidth = 2;
       for (let y = 140; y <= 560; y += 70) {
         sCtx.beginPath();
         sCtx.moveTo(120, y);
@@ -1138,9 +1155,9 @@ document.addEventListener('DOMContentLoaded', () => {
         sCtx.bezierCurveTo(cpX, targetPrevY, cpX, targetY, cur.x, targetY);
       }
 
-      // Stroke Line
+      // Stroke Line (Bold 6px)
       sCtx.strokeStyle = '#2563EB';
-      sCtx.lineWidth = 4;
+      sCtx.lineWidth = 6;
       sCtx.stroke();
 
       // Area Fill
@@ -1148,32 +1165,32 @@ document.addEventListener('DOMContentLoaded', () => {
       sCtx.lineTo(chartPoints[0].x, 560);
       sCtx.closePath();
       const fillGrad = sCtx.createLinearGradient(0, 160, 0, 560);
-      fillGrad.addColorStop(0, 'rgba(37, 99, 235, 0.35)');
+      fillGrad.addColorStop(0, 'rgba(37, 99, 235, 0.4)');
       fillGrad.addColorStop(1, 'rgba(37, 99, 235, 0)');
       sCtx.fillStyle = fillGrad;
       sCtx.fill();
 
-      // Peak Indicator Crosshair
+      // Peak Indicator Crosshair (Radius 12px, Line 4px)
       const peakX = chartPoints[chartPoints.length - 1].x;
       const peakY = 560 - (560 - chartPoints[chartPoints.length - 1].y) * surgeProg;
 
       sCtx.beginPath();
-      sCtx.arc(peakX, peakY, 8, 0, Math.PI * 2);
+      sCtx.arc(peakX, peakY, 12, 0, Math.PI * 2);
       sCtx.fillStyle = '#FFFFFF';
       sCtx.fill();
       sCtx.strokeStyle = '#2563EB';
-      sCtx.lineWidth = 3;
+      sCtx.lineWidth = 4;
       sCtx.stroke();
 
       // Target Label
-      sCtx.font = '800 24px Syne, sans-serif';
+      sCtx.font = '900 32px Syne, sans-serif';
       sCtx.fillStyle = '#FFFFFF';
       sCtx.textAlign = 'right';
-      sCtx.fillText("+380% MINDSHARE ACCELERATION", vW - 140, 120);
+      sCtx.fillText("+380% MINDSHARE ACCELERATION", vW - 140, 115);
 
-      sCtx.font = '700 15px "JetBrains Mono", monospace';
+      sCtx.font = '700 20px "JetBrains Mono", monospace';
       sCtx.fillStyle = '#2563EB';
-      sCtx.fillText("3.8M+ VERIFIED VIEWS • 8,000+ DEDICATED X AUDIENCE", vW - 140, 150);
+      sCtx.fillText("3.8M+ VERIFIED VIEWS • 8K+ DEDICATED X AUDIENCE", vW - 140, 150);
     }
 
     // Image Sprite for Owl Sentinel in Scene 4
@@ -1189,8 +1206,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const cY = vH * 0.44;
 
       // Ambient Cyber Grid in Background
-      sCtx.strokeStyle = 'rgba(37, 99, 235, 0.08)';
-      sCtx.lineWidth = 1;
+      sCtx.strokeStyle = 'rgba(37, 99, 235, 0.12)';
+      sCtx.lineWidth = 1.8;
       const gridSize = 44;
       for (let x = 0; x <= vW; x += gridSize) {
         sCtx.beginPath();
@@ -1205,14 +1222,14 @@ document.addEventListener('DOMContentLoaded', () => {
         sCtx.stroke();
       }
 
-      // Outer Rotating Radar HUD Ring with Angle Indicators
+      // Outer Rotating Radar HUD Ring with Angle Indicators (Bold 3.5px line, clean dash array)
       const outerRad = 195;
       sCtx.save();
       sCtx.translate(cX, cY);
       sCtx.rotate(f * 0.012);
-      sCtx.strokeStyle = 'rgba(37, 99, 235, 0.45)';
-      sCtx.lineWidth = 2;
-      sCtx.setLineDash([14, 18]);
+      sCtx.strokeStyle = 'rgba(37, 99, 235, 0.55)';
+      sCtx.lineWidth = 3.5;
+      sCtx.setLineDash([20, 24]);
       sCtx.beginPath();
       sCtx.arc(0, 0, outerRad, 0, Math.PI * 2);
       sCtx.stroke();
@@ -1222,8 +1239,8 @@ document.addEventListener('DOMContentLoaded', () => {
       for (let d = 0; d < 4; d++) {
         const ang = (Math.PI / 2) * d;
         sCtx.beginPath();
-        sCtx.moveTo(Math.cos(ang) * (outerRad - 12), Math.sin(ang) * (outerRad - 12));
-        sCtx.lineTo(Math.cos(ang) * (outerRad + 12), Math.sin(ang) * (outerRad + 12));
+        sCtx.moveTo(Math.cos(ang) * (outerRad - 14), Math.sin(ang) * (outerRad - 14));
+        sCtx.lineTo(Math.cos(ang) * (outerRad + 14), Math.sin(ang) * (outerRad + 14));
         sCtx.stroke();
       }
       sCtx.restore();
@@ -1233,8 +1250,8 @@ document.addEventListener('DOMContentLoaded', () => {
       sCtx.save();
       sCtx.translate(cX, cY);
       sCtx.rotate(-f * 0.016);
-      sCtx.strokeStyle = 'rgba(255, 255, 255, 0.35)';
-      sCtx.lineWidth = 1.8;
+      sCtx.strokeStyle = 'rgba(255, 255, 255, 0.45)';
+      sCtx.lineWidth = 3;
       sCtx.beginPath();
       sCtx.arc(0, 0, innerRad, 0, Math.PI * 0.45);
       sCtx.stroke();
@@ -1248,7 +1265,7 @@ document.addEventListener('DOMContentLoaded', () => {
       sCtx.save();
       sCtx.translate(cX, cY);
       const sweepGrad = sCtx.createRadialGradient(0, 0, 10, 0, 0, outerRad);
-      sweepGrad.addColorStop(0, 'rgba(37, 99, 235, 0.55)');
+      sweepGrad.addColorStop(0, 'rgba(37, 99, 235, 0.6)');
       sweepGrad.addColorStop(1, 'rgba(37, 99, 235, 0)');
       sCtx.fillStyle = sweepGrad;
       sCtx.beginPath();
@@ -1261,14 +1278,14 @@ document.addEventListener('DOMContentLoaded', () => {
       // Render the Clean Owl Sentinel Avatar Bust
       if (sentinelSprite.complete && sentinelSprite.naturalWidth > 0) {
         const spriteSize = 220;
-        const floatY = Math.sin(f * 0.08) * 5;
+        const floatY = Math.sin(f * 0.08) * 6;
         sCtx.drawImage(sentinelSprite, cX - spriteSize / 2, cY - spriteSize / 2 + floatY, spriteSize, spriteSize);
       }
 
       // Laser Scanner Beam passing over the Sentinel
       const scanY = cY - 95 + ((f * 3.6) % 190);
-      sCtx.strokeStyle = 'rgba(37, 99, 235, 0.9)';
-      sCtx.lineWidth = 2.5;
+      sCtx.strokeStyle = 'rgba(37, 99, 235, 0.95)';
+      sCtx.lineWidth = 3.5;
       sCtx.shadowColor = '#2563EB';
       sCtx.shadowBlur = 14;
       sCtx.beginPath();
@@ -1278,60 +1295,60 @@ document.addEventListener('DOMContentLoaded', () => {
       sCtx.shadowBlur = 0;
 
       // Telemetry Data Box: Left
-      sCtx.fillStyle = 'rgba(11, 15, 25, 0.9)';
-      sCtx.strokeStyle = 'rgba(37, 99, 235, 0.5)';
-      sCtx.lineWidth = 1.2;
+      sCtx.fillStyle = 'rgba(11, 15, 25, 0.92)';
+      sCtx.strokeStyle = 'rgba(37, 99, 235, 0.6)';
+      sCtx.lineWidth = 2;
       sCtx.fillRect(60, cY - 95, 250, 160);
       sCtx.strokeRect(60, cY - 95, 250, 160);
 
-      sCtx.font = '700 11px "JetBrains Mono", monospace';
+      sCtx.font = '800 13px "JetBrains Mono", monospace';
       sCtx.fillStyle = '#2563EB';
       sCtx.textAlign = 'left';
       sCtx.fillText("// AI AGENT SENTINEL", 75, cY - 70);
 
-      sCtx.font = '600 12px "JetBrains Mono", monospace';
+      sCtx.font = '700 12px "JetBrains Mono", monospace';
       sCtx.fillStyle = '#FFFFFF';
       sCtx.fillText("STATUS: AUTONOMOUS SCAN", 75, cY - 42);
       sCtx.fillText("ACCURACY: 99.8% VERIFIED", 75, cY - 18);
       sCtx.fillText("KOL INTEL: LIVE MONITOR", 75, cY + 6);
-      sCtx.fillStyle = 'rgba(255, 255, 255, 0.65)';
+      sCtx.fillStyle = 'rgba(255, 255, 255, 0.75)';
       sCtx.fillText("LATENCY: < 40MS SYNC", 75, cY + 30);
       sCtx.fillText("INTELLIGENCE: ACTIVE", 75, cY + 50);
 
       // Telemetry Data Box: Right
-      sCtx.fillStyle = 'rgba(11, 15, 25, 0.9)';
-      sCtx.strokeStyle = 'rgba(37, 99, 235, 0.5)';
-      sCtx.lineWidth = 1.2;
+      sCtx.fillStyle = 'rgba(11, 15, 25, 0.92)';
+      sCtx.strokeStyle = 'rgba(37, 99, 235, 0.6)';
+      sCtx.lineWidth = 2;
       sCtx.fillRect(vW - 310, cY - 95, 250, 160);
       sCtx.strokeRect(vW - 310, cY - 95, 250, 160);
 
-      sCtx.font = '700 11px "JetBrains Mono", monospace';
+      sCtx.font = '800 13px "JetBrains Mono", monospace';
       sCtx.fillStyle = '#2563EB';
       sCtx.textAlign = 'left';
       sCtx.fillText("// CAMPAIGN PERFORMANCE", vW - 295, cY - 70);
 
-      sCtx.font = '600 12px "JetBrains Mono", monospace';
+      sCtx.font = '700 12px "JetBrains Mono", monospace';
       sCtx.fillStyle = '#FFFFFF';
       sCtx.fillText("CAMPAIGN: MULTI-CHAIN", vW - 295, cY - 42);
       sCtx.fillText("IMPACT: 3.8M+ VIEWS", vW - 295, cY - 18);
       sCtx.fillText("RETENTION: PROTOCOL LEAD", vW - 295, cY + 6);
-      sCtx.fillStyle = 'rgba(255, 255, 255, 0.65)';
+      sCtx.fillStyle = 'rgba(255, 255, 255, 0.75)';
       sCtx.fillText("TARGET: GLOBAL WEB3", vW - 295, cY + 30);
       sCtx.fillText("CONVERSION: EXPONENTIAL", vW - 295, cY + 50);
 
       // Kinetic Typography Headline
-      sCtx.font = '800 36px Syne, sans-serif';
+      sCtx.font = '900 42px Syne, sans-serif';
       sCtx.fillStyle = '#FFFFFF';
       sCtx.textAlign = 'center';
       sCtx.fillText("AUTONOMOUS MARKETING SENTINEL", vW / 2, vH * 0.81);
 
-      sCtx.font = '700 15px "JetBrains Mono", monospace';
+      sCtx.font = '700 20px "JetBrains Mono", monospace';
       sCtx.fillStyle = '#2563EB';
       sCtx.fillText("PAIRING CREATIVE PRODUCTION WITH PROTOCOL ADOPTION", vW / 2, vH * 0.87);
 
       // Audio Oscilloscope Waveform at Bottom
-      sCtx.strokeStyle = 'rgba(255, 255, 255, 0.45)';
-      sCtx.lineWidth = 1.6;
+      sCtx.strokeStyle = 'rgba(255, 255, 255, 0.55)';
+      sCtx.lineWidth = 2.5;
       sCtx.beginPath();
       for (let x = 0; x < vW; x += 6) {
         const wave = Math.sin(x * 0.02 + f * 0.12) * Math.cos(x * 0.006 + f * 0.06) * 20;
@@ -1340,6 +1357,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       sCtx.stroke();
     }
+
 
     // =========================================================================
     // Generative Web Audio Ambient Lo-Fi Synth Loop (Zero External Files)
