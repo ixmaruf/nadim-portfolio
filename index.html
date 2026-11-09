@@ -897,31 +897,110 @@
         </div>
 
         <!-- Inverted Contact Detail Grid (Directly Below Red Banner in Image 1) -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 pt-8 border-t-2 border-[#0A0A0A]">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 pt-8 border-t-2 border-[#0A0A0A]">
           
-          <div>
-            <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#D31419] block mb-2">GET IN TOUCH</span>
-            <a href="mailto:nadimskip035@gmail.com" class="font-sans font-bold text-sm text-[#0A0A0A] hover:text-[#D31419] block transition-colors">
-              nadimskip035@gmail.com
-            </a>
-            <span class="font-mono text-xs text-[#0A0A0A]/70 block mt-1">Dhaka, Bangladesh · Operating Worldwide</span>
-          </div>
-
-          <div>
-            <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#D31419] block mb-2">COMMUNITY DIRECT</span>
-            <a href="https://t.me/Nabil_vai!!" target="_blank" rel="noopener noreferrer" class="font-sans font-bold text-sm text-[#0A0A0A] hover:text-[#D31419] block transition-colors">
-              Telegram: @Nabil_vai!!
-            </a>
-            <span class="font-sans text-xs text-[#0A0A0A]/80 block mt-1">Discord: nabilk007</span>
-          </div>
-
-          <div>
-            <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#D31419] block mb-2">FOLLOW & VERIFY</span>
-            <div class="flex items-center gap-4 text-xs font-mono font-bold text-[#0A0A0A]">
-              <a href="https://x.com/Al_Nadim_nabil" target="_blank" rel="noopener noreferrer" class="hover:text-[#D31419] transition-colors">X (TWITTER) ↗</a>
-              <a href="https://github.com/ixmaruf/nadim-portfolio" target="_blank" rel="noopener noreferrer" class="hover:text-[#D31419] transition-colors">GITHUB ↗</a>
+          <!-- Column 1: DIRECT EMAIL -->
+          <div class="flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-xs font-black uppercase tracking-widest text-[#D31419] block mb-3 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-[#D31419]"></span>
+                GET IN TOUCH
+              </span>
+              <a href="mailto:nadimskip035@gmail.com" class="group flex items-center gap-4 p-4 rounded-2xl bg-[#FAF6EF] border-2 border-[#0A0A0A] shadow-[4px_4px_0px_#0A0A0A] hover:shadow-[6px_6px_0px_#D31419] hover:border-[#D31419] hover:-translate-y-0.5 transition-all duration-200">
+                <div class="w-12 h-12 rounded-xl bg-white border-2 border-[#0A0A0A] flex items-center justify-center flex-shrink-0 group-hover:bg-[#D31419]/10 transition-colors">
+                  <svg class="w-6 h-6 text-[#D31419]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  </svg>
+                </div>
+                <div class="min-w-0">
+                  <span class="block font-mono text-[10px] font-bold text-[#0A0A0A]/60 uppercase tracking-wider">OFFICIAL EMAIL</span>
+                  <span class="block font-sans font-bold text-sm text-[#0A0A0A] group-hover:text-[#D31419] transition-colors truncate">
+                    nadimskip035@gmail.com
+                  </span>
+                  <span class="inline-flex items-center gap-1 font-mono text-[10px] font-bold text-[#D31419] mt-0.5">
+                    SEND EMAIL ↗
+                  </span>
+                </div>
+              </a>
             </div>
-            <span class="font-mono text-[11px] text-[#0A0A0A]/70 block mt-1 font-semibold">8,000+ Active Audience Network</span>
+            <div class="mt-3 font-mono text-xs text-[#0A0A0A]/70 flex items-center gap-2">
+              <span>Dhaka, Bangladesh</span>
+              <span>•</span>
+              <span>Available Globally</span>
+            </div>
+          </div>
+
+          <!-- Column 2: COMMUNITY DIRECT (Telegram & Discord) -->
+          <div class="flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-xs font-black uppercase tracking-widest text-[#84CC16] block mb-3 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-[#84CC16]"></span>
+                COMMUNITY DIRECT
+              </span>
+              <div class="space-y-3">
+                <!-- Telegram Card -->
+                <a href="https://t.me/Nabil_vai!!" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 p-4 rounded-2xl bg-[#FAF6EF] border-2 border-[#0A0A0A] shadow-[4px_4px_0px_#0A0A0A] hover:shadow-[6px_6px_0px_#229ED9] hover:border-[#229ED9] hover:-translate-y-0.5 transition-all duration-200">
+                  <div class="w-12 h-12 rounded-xl bg-white border-2 border-[#0A0A0A] flex items-center justify-center flex-shrink-0 group-hover:bg-[#229ED9]/10 transition-colors">
+                    <svg class="w-6 h-6 text-[#229ED9]" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/>
+                    </svg>
+                  </div>
+                  <div class="min-w-0">
+                    <span class="block font-mono text-[10px] font-bold text-[#0A0A0A]/60 uppercase tracking-wider">TELEGRAM DIRECT</span>
+                    <span class="block font-sans font-bold text-sm text-[#0A0A0A] group-hover:text-[#229ED9] transition-colors">
+                      @Nabil_vai!!
+                    </span>
+                    <span class="inline-flex items-center gap-1 font-mono text-[10px] font-bold text-[#229ED9] mt-0.5">
+                      OPEN IN TELEGRAM ↗
+                    </span>
+                  </div>
+                </a>
+
+                <!-- Discord Card -->
+                <div class="flex items-center gap-4 p-3.5 rounded-2xl bg-[#FAF6EF] border-2 border-[#0A0A0A] shadow-[2px_2px_0px_#0A0A0A]">
+                  <div class="w-10 h-10 rounded-xl bg-white border-2 border-[#0A0A0A] flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-[#5865F2]" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                    </svg>
+                  </div>
+                  <div class="min-w-0">
+                    <span class="block font-mono text-[9px] font-bold text-[#0A0A0A]/60 uppercase">DISCORD</span>
+                    <span class="block font-mono font-bold text-xs text-[#0A0A0A]">nabilk007</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 3: OFFICIAL SOCIALS (X / Twitter) -->
+          <div class="flex flex-col justify-between">
+            <div>
+              <span class="font-mono text-xs font-black uppercase tracking-widest text-[#0A0A0A] block mb-3 flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-[#0A0A0A]"></span>
+                OFFICIAL SOCIALS
+              </span>
+              <a href="https://x.com/Al_Nadim_nabil" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-4 p-4 rounded-2xl bg-[#FAF6EF] border-2 border-[#0A0A0A] shadow-[4px_4px_0px_#0A0A0A] hover:shadow-[6px_6px_0px_#0A0A0A] hover:border-[#0A0A0A] hover:-translate-y-0.5 transition-all duration-200">
+                <div class="w-12 h-12 rounded-xl bg-white border-2 border-[#0A0A0A] flex items-center justify-center flex-shrink-0 group-hover:bg-[#0A0A0A]/10 transition-colors">
+                  <svg class="w-6 h-6 text-[#0A0A0A]" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                </div>
+                <div class="min-w-0">
+                  <span class="block font-mono text-[10px] font-bold text-[#0A0A0A]/60 uppercase tracking-wider">X (TWITTER)</span>
+                  <span class="block font-sans font-bold text-sm text-[#0A0A0A] group-hover:text-[#D31419] transition-colors">
+                    @Al_Nadim_nabil
+                  </span>
+                  <span class="inline-flex items-center gap-1 font-mono text-[10px] font-bold text-[#0A0A0A] mt-0.5">
+                    OPEN PROFILE ↗
+                  </span>
+                </div>
+              </a>
+            </div>
+            <div class="mt-3 font-mono text-xs text-[#0A0A0A]/70 flex items-center gap-2">
+              <span class="font-bold text-[#D31419]">8,000+</span>
+              <span>Active Web3 Audience</span>
+            </div>
           </div>
 
         </div>
@@ -937,26 +1016,29 @@
   <footer class="bg-[#F4EFE6] border-t-2 border-[#0A0A0A] py-8 text-[#0A0A0A]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
       
-      <!-- Built by marufix.xyz Badge (User Request) -->
-      <div class="flex items-center gap-3.5">
+      <!-- Built by marufix.xyz Badge (Clickable External Link Card) -->
+      <a href="https://marufix.xyz" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3.5 px-4 py-2.5 rounded-2xl bg-[#FAF6EF] border-2 border-[#0A0A0A] shadow-[3px_3px_0px_#0A0A0A] hover:shadow-[5px_5px_0px_#D31419] hover:border-[#D31419] hover:-translate-y-0.5 transition-all duration-200">
         <div class="relative w-10 h-10 rounded-full border-2 border-[#0A0A0A] overflow-hidden flex-shrink-0 shadow-sm bg-white">
-          <img src="maruf_profile.webp" alt="Maruf Hasan" class="w-full h-full object-cover">
+          <img src="maruf_profile.webp" alt="Maruf Hasan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200">
           <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-[#84CC16] border border-white"></span>
         </div>
         <div>
-          <span class="block font-mono text-xs font-bold tracking-wider text-[#0A0A0A]">
-            BUILT BY <a href="https://marufix.xyz" target="_blank" rel="noopener noreferrer" class="text-[#D31419] hover:underline font-black">MARUFIX.XYZ</a>
-          </span>
-          <span class="block font-mono text-[10px] text-[#0A0A0A]/70 font-semibold">
-            Crafted for Al Nadim Nabil · Web3 Growth Architect
+          <div class="flex items-center gap-1 font-mono text-xs font-black tracking-wider text-[#0A0A0A] group-hover:text-[#D31419] transition-colors">
+            <span>BUILT BY MARUFIX.XYZ</span>
+            <svg class="w-3.5 h-3.5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </div>
+          <span class="block font-mono text-[10px] text-[#0A0A0A]/60">
+            Maruf Hasan Portfolio ↗
           </span>
         </div>
-      </div>
+      </a>
 
-      <!-- Copyright Notice -->
-      <div class="text-center md:text-right font-mono text-[11px] text-[#0A0A0A]/70 font-semibold">
-        <div>© 2026 AL NADIM NABIL. ALL RIGHTS RESERVED.</div>
-        <div>SWISS EDITORIAL × JAPANESE MANGA EDITION.</div>
+      <!-- Clean Minimal Copyright Notice (No unnecessary fluff) -->
+      <div class="text-center md:text-right font-mono text-xs text-[#0A0A0A]/70 font-semibold">
+        © 2026 AL NADIM NABIL. ALL RIGHTS RESERVED.
       </div>
 
     </div>
