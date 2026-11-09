@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sfxBtn.addEventListener('click', () => {
       sfxEnabled = !sfxEnabled;
       sfxStatus.textContent = sfxEnabled ? 'ACTIVE' : 'MUTED';
-      sfxStatus.style.color = sfxEnabled ? 'var(--color-cobalt)' : 'inherit';
+      sfxStatus.style.color = sfxEnabled ? 'var(--color-crimson)' : 'inherit';
       if (sfxEnabled) playTone(659.25, 'sine', 0.1);
     });
   }
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(37, 99, 235, 0.45)';
+        ctx.fillStyle = 'rgba(211, 20, 25, 0.45)';
         ctx.fill();
       }
     }
@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.beginPath();
         ctx.moveTo(v1.px, v1.py);
         ctx.lineTo(v2.px, v2.py);
-        ctx.strokeStyle = `rgba(37, 99, 235, ${alpha})`;
+        ctx.strokeStyle = `rgba(211, 20, 25, ${alpha})`;
         ctx.stroke();
       });
 
@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.fill();
         ctx.beginPath();
         ctx.arc(v.px, v.py, 1.5, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(37, 99, 235, 0.9)';
+        ctx.fillStyle = 'rgba(211, 20, 25, 0.9)';
         ctx.fill();
       });
     }
@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (distToMouse < 130) {
               const boost = (130 - distToMouse) / 130;
-              strokeColor = `rgba(37, 99, 235, ${0.15 + boost * 0.45})`;
+              strokeColor = `rgba(211, 20, 25, ${0.15 + boost * 0.45})`;
               lineWidth = 0.8 + boost * 1.2;
             }
 
@@ -334,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
       card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-4px)`;
 
       if (glare) {
-        glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(37, 99, 235, 0.14), transparent 65%)`;
+        glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(211, 20, 25, 0.14), transparent 65%)`;
       }
     });
 
@@ -866,10 +866,10 @@ document.addEventListener('DOMContentLoaded', () => {
     sceneTabBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         sceneTabBtns.forEach(b => {
-          b.classList.remove('active', 'bg-cobalt');
+          b.classList.remove('active', 'bg-[#D31419]');
           b.classList.add('bg-white/10');
         });
-        btn.classList.add('active', 'bg-cobalt');
+        btn.classList.add('active', 'bg-[#D31419]');
         btn.classList.remove('bg-white/10');
 
         const sceneIdx = parseInt(btn.getAttribute('data-scene'));
@@ -883,10 +883,10 @@ document.addEventListener('DOMContentLoaded', () => {
     speedBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         speedBtns.forEach(b => {
-          b.classList.remove('bg-cobalt', 'text-white', 'font-bold');
+          b.classList.remove('bg-[#D31419]', 'text-white', 'font-bold');
           b.classList.add('text-white/70');
         });
-        btn.classList.add('bg-cobalt', 'text-white', 'font-bold');
+        btn.classList.add('bg-[#D31419]', 'text-white', 'font-bold');
         btn.classList.remove('text-white/70');
 
         playbackSpeed = parseFloat(btn.getAttribute('data-speed'));
@@ -906,10 +906,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update active scene tab button
         sceneTabBtns.forEach(b => {
           if (parseInt(b.getAttribute('data-scene')) === currentScene) {
-            b.classList.add('active', 'bg-cobalt');
+            b.classList.add('active', 'bg-[#D31419]');
             b.classList.remove('bg-white/10');
           } else {
-            b.classList.remove('active', 'bg-cobalt');
+            b.classList.remove('active', 'bg-[#D31419]');
             b.classList.add('bg-white/10');
           }
         });
@@ -924,7 +924,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function drawSceneLaunchTeaser(f) {
       // Background Radial Ambient Glow
       const grad = sCtx.createRadialGradient(vW / 2, vH / 2, 50, vW / 2, vH / 2, vW * 0.65);
-      grad.addColorStop(0, 'rgba(37, 99, 235, 0.22)');
+      grad.addColorStop(0, 'rgba(211, 20, 25, 0.22)');
       grad.addColorStop(1, 'rgba(7, 10, 17, 1)');
       sCtx.fillStyle = grad;
       sCtx.fillRect(0, 0, vW, vH);
@@ -962,7 +962,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Draw 3D Hexagon Edges (Bold 4.5px stroke for crisp retina rendering)
-      sCtx.strokeStyle = '#2563EB';
+      sCtx.strokeStyle = '#D31419';
       sCtx.lineWidth = 4.5;
       sCtx.beginPath();
       for (let i = 0; i < corners; i++) {
@@ -981,7 +981,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sCtx.beginPath();
         sCtx.arc(pt.x, pt.y, 7, 0, Math.PI * 2);
         sCtx.fillStyle = '#FFFFFF';
-        sCtx.shadowColor = '#2563EB';
+        sCtx.shadowColor = '#D31419';
         sCtx.shadowBlur = 10;
         sCtx.fill();
         sCtx.shadowBlur = 0;
@@ -1001,7 +1001,7 @@ document.addEventListener('DOMContentLoaded', () => {
       sCtx.fillText("SCALING WEB3 PROTOCOLS", 0, 0);
 
       sCtx.font = '700 24px "JetBrains Mono", monospace';
-      sCtx.fillStyle = '#2563EB';
+      sCtx.fillStyle = '#D31419';
       sCtx.fillText("MONAD • INJECTIVE • EXSAT • SOLANA • BASE", 0, 40);
       sCtx.restore();
 
@@ -1014,7 +1014,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       for (let b = 0; b < bars; b++) {
         const barH = Math.abs(Math.sin(f * 0.15 + b * 0.35)) * 48 + 10;
-        sCtx.fillStyle = b % 2 === 0 ? '#2563EB' : 'rgba(255, 255, 255, 0.75)';
+        sCtx.fillStyle = b % 2 === 0 ? '#D31419' : 'rgba(255, 255, 255, 0.75)';
         sCtx.fillRect(startX + b * (barWidth + barGap), vH - 32 - barH, barWidth, barH);
       }
     }
@@ -1034,7 +1034,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const waveAlpha = Math.max(0, 1 - waveRadius / 380) * 0.55;
         sCtx.beginPath();
         sCtx.arc(cX, cY, waveRadius, 0, Math.PI * 2);
-        sCtx.strokeStyle = `rgba(37, 99, 235, ${waveAlpha})`;
+        sCtx.strokeStyle = `rgba(211, 20, 25, ${waveAlpha})`;
         sCtx.lineWidth = 3;
         sCtx.stroke();
       }
@@ -1069,8 +1069,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         sCtx.beginPath();
         sCtx.arc(px, py, 8, 0, Math.PI * 2);
-        sCtx.fillStyle = '#2563EB';
-        sCtx.shadowColor = '#2563EB';
+        sCtx.fillStyle = '#D31419';
+        sCtx.shadowColor = '#D31419';
         sCtx.shadowBlur = 12;
         sCtx.fill();
         sCtx.shadowBlur = 0;
@@ -1080,7 +1080,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sCtx.arc(nx, ny, 36, 0, Math.PI * 2);
         sCtx.fillStyle = 'rgba(11, 15, 25, 0.95)';
         sCtx.fill();
-        sCtx.strokeStyle = '#2563EB';
+        sCtx.strokeStyle = '#D31419';
         sCtx.lineWidth = 3.5;
         sCtx.stroke();
 
@@ -1094,7 +1094,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Center Hub Circle (Radius 54px, Line 4px)
       sCtx.beginPath();
       sCtx.arc(cX, cY, 54, 0, Math.PI * 2);
-      sCtx.fillStyle = '#2563EB';
+      sCtx.fillStyle = '#D31419';
       sCtx.fill();
       sCtx.strokeStyle = '#FFFFFF';
       sCtx.lineWidth = 4;
@@ -1156,7 +1156,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Stroke Line (Bold 6px)
-      sCtx.strokeStyle = '#2563EB';
+      sCtx.strokeStyle = '#D31419';
       sCtx.lineWidth = 6;
       sCtx.stroke();
 
@@ -1165,8 +1165,8 @@ document.addEventListener('DOMContentLoaded', () => {
       sCtx.lineTo(chartPoints[0].x, 560);
       sCtx.closePath();
       const fillGrad = sCtx.createLinearGradient(0, 160, 0, 560);
-      fillGrad.addColorStop(0, 'rgba(37, 99, 235, 0.4)');
-      fillGrad.addColorStop(1, 'rgba(37, 99, 235, 0)');
+      fillGrad.addColorStop(0, 'rgba(211, 20, 25, 0.4)');
+      fillGrad.addColorStop(1, 'rgba(211, 20, 25, 0)');
       sCtx.fillStyle = fillGrad;
       sCtx.fill();
 
@@ -1178,7 +1178,7 @@ document.addEventListener('DOMContentLoaded', () => {
       sCtx.arc(peakX, peakY, 12, 0, Math.PI * 2);
       sCtx.fillStyle = '#FFFFFF';
       sCtx.fill();
-      sCtx.strokeStyle = '#2563EB';
+      sCtx.strokeStyle = '#D31419';
       sCtx.lineWidth = 4;
       sCtx.stroke();
 
@@ -1189,7 +1189,7 @@ document.addEventListener('DOMContentLoaded', () => {
       sCtx.fillText("+380% MINDSHARE ACCELERATION", vW - 140, 115);
 
       sCtx.font = '700 20px "JetBrains Mono", monospace';
-      sCtx.fillStyle = '#2563EB';
+      sCtx.fillStyle = '#D31419';
       sCtx.fillText("3.8M+ VERIFIED VIEWS • 8K+ DEDICATED X AUDIENCE", vW - 140, 150);
     }
 
@@ -1206,7 +1206,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const cY = vH * 0.44;
 
       // Ambient Cyber Grid in Background
-      sCtx.strokeStyle = 'rgba(37, 99, 235, 0.12)';
+      sCtx.strokeStyle = 'rgba(211, 20, 25, 0.12)';
       sCtx.lineWidth = 1.8;
       const gridSize = 44;
       for (let x = 0; x <= vW; x += gridSize) {
@@ -1227,7 +1227,7 @@ document.addEventListener('DOMContentLoaded', () => {
       sCtx.save();
       sCtx.translate(cX, cY);
       sCtx.rotate(f * 0.012);
-      sCtx.strokeStyle = 'rgba(37, 99, 235, 0.55)';
+      sCtx.strokeStyle = 'rgba(211, 20, 25, 0.55)';
       sCtx.lineWidth = 3.5;
       sCtx.setLineDash([20, 24]);
       sCtx.beginPath();
@@ -1265,8 +1265,8 @@ document.addEventListener('DOMContentLoaded', () => {
       sCtx.save();
       sCtx.translate(cX, cY);
       const sweepGrad = sCtx.createRadialGradient(0, 0, 10, 0, 0, outerRad);
-      sweepGrad.addColorStop(0, 'rgba(37, 99, 235, 0.6)');
-      sweepGrad.addColorStop(1, 'rgba(37, 99, 235, 0)');
+      sweepGrad.addColorStop(0, 'rgba(211, 20, 25, 0.6)');
+      sweepGrad.addColorStop(1, 'rgba(211, 20, 25, 0)');
       sCtx.fillStyle = sweepGrad;
       sCtx.beginPath();
       sCtx.moveTo(0, 0);
@@ -1284,9 +1284,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Laser Scanner Beam passing over the Sentinel
       const scanY = cY - 95 + ((f * 3.6) % 190);
-      sCtx.strokeStyle = 'rgba(37, 99, 235, 0.95)';
+      sCtx.strokeStyle = 'rgba(211, 20, 25, 0.95)';
       sCtx.lineWidth = 3.5;
-      sCtx.shadowColor = '#2563EB';
+      sCtx.shadowColor = '#D31419';
       sCtx.shadowBlur = 14;
       sCtx.beginPath();
       sCtx.moveTo(cX - 120, scanY);
@@ -1296,13 +1296,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Telemetry Data Box: Left
       sCtx.fillStyle = 'rgba(11, 15, 25, 0.92)';
-      sCtx.strokeStyle = 'rgba(37, 99, 235, 0.6)';
+      sCtx.strokeStyle = 'rgba(211, 20, 25, 0.6)';
       sCtx.lineWidth = 2;
       sCtx.fillRect(60, cY - 95, 250, 160);
       sCtx.strokeRect(60, cY - 95, 250, 160);
 
       sCtx.font = '800 13px "JetBrains Mono", monospace';
-      sCtx.fillStyle = '#2563EB';
+      sCtx.fillStyle = '#D31419';
       sCtx.textAlign = 'left';
       sCtx.fillText("// AI AGENT SENTINEL", 75, cY - 70);
 
@@ -1317,13 +1317,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Telemetry Data Box: Right
       sCtx.fillStyle = 'rgba(11, 15, 25, 0.92)';
-      sCtx.strokeStyle = 'rgba(37, 99, 235, 0.6)';
+      sCtx.strokeStyle = 'rgba(211, 20, 25, 0.6)';
       sCtx.lineWidth = 2;
       sCtx.fillRect(vW - 310, cY - 95, 250, 160);
       sCtx.strokeRect(vW - 310, cY - 95, 250, 160);
 
       sCtx.font = '800 13px "JetBrains Mono", monospace';
-      sCtx.fillStyle = '#2563EB';
+      sCtx.fillStyle = '#D31419';
       sCtx.textAlign = 'left';
       sCtx.fillText("// CAMPAIGN PERFORMANCE", vW - 295, cY - 70);
 
@@ -1343,7 +1343,7 @@ document.addEventListener('DOMContentLoaded', () => {
       sCtx.fillText("AUTONOMOUS MARKETING SENTINEL", vW / 2, vH * 0.81);
 
       sCtx.font = '700 20px "JetBrains Mono", monospace';
-      sCtx.fillStyle = '#2563EB';
+      sCtx.fillStyle = '#D31419';
       sCtx.fillText("PAIRING CREATIVE PRODUCTION WITH PROTOCOL ADOPTION", vW / 2, vH * 0.87);
 
       // Audio Oscilloscope Waveform at Bottom
@@ -1449,7 +1449,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (soundOffIcon) soundOffIcon.classList.add('hidden');
           if (soundOnIcon) soundOnIcon.classList.remove('hidden');
           if (soundStatusText) soundStatusText.textContent = 'SYNTH: ON';
-          audioToggleBtn.classList.add('bg-cobalt', 'text-white');
+          audioToggleBtn.classList.add('bg-[#D31419]', 'text-white');
           audioToggleBtn.classList.remove('bg-white/10', 'text-white/80');
 
           playSynthChord();
@@ -1458,7 +1458,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (soundOffIcon) soundOffIcon.classList.remove('hidden');
           if (soundOnIcon) soundOnIcon.classList.add('hidden');
           if (soundStatusText) soundStatusText.textContent = 'SYNTH: OFF';
-          audioToggleBtn.classList.remove('bg-cobalt', 'text-white');
+          audioToggleBtn.classList.remove('bg-[#D31419]', 'text-white');
           audioToggleBtn.classList.add('bg-white/10', 'text-white/80');
 
           if (synthTimer) clearInterval(synthTimer);
@@ -1507,10 +1507,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update active scene tab button
         sceneTabBtns.forEach(b => {
           if (parseInt(b.getAttribute('data-scene')) === currentScene) {
-            b.classList.add('active', 'bg-cobalt');
+            b.classList.add('active', 'bg-[#D31419]');
             b.classList.remove('bg-white/10');
           } else {
-            b.classList.remove('active', 'bg-cobalt');
+            b.classList.remove('active', 'bg-[#D31419]');
             b.classList.add('bg-white/10');
           }
         });

@@ -8,41 +8,68 @@
   <link rel="icon" type="image/png" href="owl_avatar.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=25">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind Play CDN for Guaranteed Class Compilation -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#F4EFE6',
+            'cream-light': '#FAF6EF',
+            'cream-dark': '#E8E1D5',
+            ink: '#0A0A0A',
+            'ink-card': '#141414',
+            crimson: '#D31419',
+            'crimson-dark': '#B30E13',
+            animegreen: '#84CC16',
+          },
+          fontFamily: {
+            bebas: ['"Bebas Neue"', 'Impact', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="style.css?v=27">
 </head>
-<body class="bg-[#F8FAFC] text-[#0A0D14] antialiased selection:bg-[#E11D48] selection:text-white relative font-sans">
+<body class="bg-[#F4EFE6] text-[#0A0A0A] antialiased selection:bg-[#D31419] selection:text-white relative font-sans overflow-x-hidden w-full">
 
   <!-- Interactive Click Ripple Stage -->
   <div id="rippleContainer" class="fixed inset-0 pointer-events-none z-50 overflow-hidden"></div>
 
-  <!-- Bespoke Web3 Fluid Cursor (Desktop Only) -->
+  <!-- Bespoke Fluid Cursor (Desktop Only) -->
   <div id="customCursorDot" class="hidden md:block"></div>
   <div id="customCursorRing" class="hidden md:block"></div>
 
-  <!-- Scroll Progress Indicator -->
-  <div id="scrollProgress" class="fixed top-0 left-0 h-1 bg-[#E11D48] z-50 transition-all duration-75"></div>
+  <!-- Scroll Progress Indicator in Red -->
+  <div id="scrollProgress" class="fixed top-0 left-0 h-1 bg-[#D31419] z-50 transition-all duration-75"></div>
 
   <!-- Ambient Light Mesh Canvas -->
-  <canvas id="ambientCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-20"></canvas>
+  <canvas id="ambientCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-15"></canvas>
 
   <!-- ==========================================================================
-       01. EDITORIAL NEWSPAPER HEADER
+       01. EDITORIAL NEWSPAPER HEADER (CREAM + INK BLACK + RED)
        ========================================================================== -->
-  <header class="fixed top-0 left-0 right-0 z-40 bg-[#F8FAFC]/90 backdrop-blur-md border-b border-[#0A0D14]/10 transition-all duration-300" id="mainHeader">
+  <header class="fixed top-0 left-0 right-0 z-40 bg-[#F4EFE6]/95 backdrop-blur-md border-b-2 border-[#0A0A0A] transition-all duration-300" id="mainHeader">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
       <!-- Monogram & Identity -->
       <a href="#hero" class="flex items-center gap-3.5 group">
-        <div class="relative w-11 h-11 rounded-full p-0.5 bg-[#0A0D14] border border-[#0A0D14]/20 overflow-hidden flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
+        <div class="relative w-11 h-11 rounded-full p-0.5 bg-[#0A0A0A] border-2 border-[#0A0A0A] overflow-hidden flex-shrink-0 group-hover:scale-105 transition-transform duration-300 shadow-sm">
           <img src="nadim_headshot.jpg" alt="Nadim Nabil Portrait" class="w-full h-full object-cover object-center rounded-full">
-          <span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-[#E11D48] border-2 border-white"></span>
+          <span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-[#D31419] border-2 border-white"></span>
         </div>
         <div>
-          <span class="block font-bebas text-2xl tracking-wide text-[#0A0D14] leading-none group-hover:text-[#E11D48] transition-colors">
-            NADIM NABIL<span class="text-[#E11D48]">.</span>
+          <span class="block font-bebas text-2xl tracking-wide text-[#0A0A0A] leading-none group-hover:text-[#D31419] transition-colors">
+            NADIM NABIL<span class="text-[#D31419]">.</span>
           </span>
-          <span class="block font-mono text-[10px] tracking-widest text-[#0A0D14]/60 font-semibold mt-0.5 uppercase">
+          <span class="block font-mono text-[10px] tracking-widest text-[#0A0A0A]/70 font-bold mt-0.5 uppercase">
             WEB3 GROWTH ARCHITECT
           </span>
         </div>
@@ -50,20 +77,20 @@
 
       <!-- Desktop Editorial Navigation Links -->
       <nav class="hidden lg:flex items-center gap-8 text-xs font-semibold tracking-widest uppercase font-mono">
-        <a href="#work" class="nav-link text-[#0A0D14]/70 hover:text-[#E11D48] transition-colors duration-200">Work</a>
-        <a href="#services" class="nav-link text-[#0A0D14]/70 hover:text-[#E11D48] transition-colors duration-200">Services</a>
-        <a href="#mascot" class="nav-link text-[#0A0D14]/70 hover:text-[#E11D48] transition-colors duration-200 flex items-center gap-1.5">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#84CC16]"></span>
+        <a href="#work" class="nav-link text-[#0A0A0A]/80 hover:text-[#D31419] transition-colors duration-200">Work</a>
+        <a href="#services" class="nav-link text-[#0A0A0A]/80 hover:text-[#D31419] transition-colors duration-200">Services</a>
+        <a href="#mascot" class="nav-link text-[#0A0A0A]/80 hover:text-[#D31419] transition-colors duration-200 flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-[#84CC16]"></span>
           Hunter Scout
         </a>
-        <a href="#media" class="nav-link text-[#0A0D14]/70 hover:text-[#E11D48] transition-colors duration-200">Media Studio</a>
-        <a href="#about" class="nav-link text-[#0A0D14]/70 hover:text-[#E11D48] transition-colors duration-200">About</a>
-        <a href="#contact" class="nav-link text-[#0A0D14]/70 hover:text-[#E11D48] transition-colors duration-200">Contact</a>
+        <a href="#media" class="nav-link text-[#0A0A0A]/80 hover:text-[#D31419] transition-colors duration-200">Media Studio</a>
+        <a href="#about" class="nav-link text-[#0A0A0A]/80 hover:text-[#D31419] transition-colors duration-200">About</a>
+        <a href="#contact" class="nav-link text-[#0A0A0A]/80 hover:text-[#D31419] transition-colors duration-200">Contact</a>
       </nav>
 
-      <!-- Header Action Pill Button -->
+      <!-- Header Action Pill Button in Red -->
       <div class="hidden sm:flex items-center gap-4">
-        <a href="#contact" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#E11D48] text-white text-xs font-mono font-bold tracking-wider uppercase hover:bg-[#BE123C] transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5">
+        <a href="#contact" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#D31419] text-white text-xs font-mono font-bold tracking-wider uppercase hover:bg-[#B30E13] border-2 border-[#0A0A0A] shadow-[2px_2px_0px_#0A0A0A] hover:shadow-[3px_3px_0px_#0A0A0A] hover:-translate-y-0.5 transition-all duration-200">
           <span>LET'S TALK</span>
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -73,11 +100,11 @@
       </div>
 
       <!-- Mobile Hamburger Button -->
-      <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg text-[#0A0D14] hover:bg-[#0A0D14]/5 transition-colors focus:outline-none" aria-label="Toggle Navigation">
-        <svg id="menuIconBars" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+      <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg text-[#0A0A0A] hover:bg-[#0A0A0A]/10 transition-colors focus:outline-none" aria-label="Toggle Navigation">
+        <svg id="menuIconBars" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
-        <svg id="menuIconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+        <svg id="menuIconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
@@ -85,18 +112,18 @@
     </div>
 
     <!-- Mobile Drawer Menu -->
-    <div id="mobileMenu" class="lg:hidden hidden bg-[#F8FAFC] border-b border-[#0A0D14]/10 px-4 pt-3 pb-6 space-y-3">
-      <a href="#work" class="mobile-nav-link block px-3 py-2 text-sm font-mono font-bold uppercase tracking-wider text-[#0A0D14] hover:bg-[#0A0D14]/5 rounded">Work</a>
-      <a href="#services" class="mobile-nav-link block px-3 py-2 text-sm font-mono font-bold uppercase tracking-wider text-[#0A0D14] hover:bg-[#0A0D14]/5 rounded">Services</a>
-      <a href="#mascot" class="mobile-nav-link block px-3 py-2 text-sm font-mono font-bold uppercase tracking-wider text-[#0A0D14] hover:bg-[#0A0D14]/5 rounded flex items-center justify-between">
+    <div id="mobileMenu" class="lg:hidden hidden bg-[#F4EFE6] border-b-2 border-[#0A0A0A] px-4 pt-3 pb-6 space-y-3">
+      <a href="#work" class="mobile-nav-link block px-3 py-2 text-sm font-mono font-bold uppercase tracking-wider text-[#0A0A0A] hover:bg-[#0A0A0A]/5 rounded">Work</a>
+      <a href="#services" class="mobile-nav-link block px-3 py-2 text-sm font-mono font-bold uppercase tracking-wider text-[#0A0A0A] hover:bg-[#0A0A0A]/5 rounded">Services</a>
+      <a href="#mascot" class="mobile-nav-link block px-3 py-2 text-sm font-mono font-bold uppercase tracking-wider text-[#0A0A0A] hover:bg-[#0A0A0A]/5 rounded flex items-center justify-between">
         <span>Hunter Scout</span>
-        <span class="text-xs px-2 py-0.5 rounded bg-[#84CC16] text-[#0A0D14] font-bold">MANGA</span>
+        <span class="text-xs px-2 py-0.5 rounded bg-[#84CC16] text-[#0A0A0A] font-bold">MANGA</span>
       </a>
-      <a href="#media" class="mobile-nav-link block px-3 py-2 text-sm font-mono font-bold uppercase tracking-wider text-[#0A0D14] hover:bg-[#0A0D14]/5 rounded">Media Studio</a>
-      <a href="#about" class="mobile-nav-link block px-3 py-2 text-sm font-mono font-bold uppercase tracking-wider text-[#0A0D14] hover:bg-[#0A0D14]/5 rounded">About</a>
-      <a href="#contact" class="mobile-nav-link block px-3 py-2 text-sm font-mono font-bold uppercase tracking-wider text-[#0A0D14] hover:bg-[#0A0D14]/5 rounded">Contact</a>
+      <a href="#media" class="mobile-nav-link block px-3 py-2 text-sm font-mono font-bold uppercase tracking-wider text-[#0A0A0A] hover:bg-[#0A0A0A]/5 rounded">Media Studio</a>
+      <a href="#about" class="mobile-nav-link block px-3 py-2 text-sm font-mono font-bold uppercase tracking-wider text-[#0A0A0A] hover:bg-[#0A0A0A]/5 rounded">About</a>
+      <a href="#contact" class="mobile-nav-link block px-3 py-2 text-sm font-mono font-bold uppercase tracking-wider text-[#0A0A0A] hover:bg-[#0A0A0A]/5 rounded">Contact</a>
       <div class="pt-2">
-        <a href="#contact" class="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-[#E11D48] text-white text-xs font-mono font-bold tracking-wider uppercase">
+        <a href="#contact" class="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-[#D31419] text-white text-xs font-mono font-bold tracking-wider uppercase border-2 border-[#0A0A0A] shadow-[2px_2px_0px_#0A0A0A]">
           <span>LET'S TALK</span>
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -111,9 +138,10 @@
   <main class="relative z-10 pt-24 sm:pt-28">
 
     <!-- ==========================================================================
-         02. HERO SECTION — EXACT SWISS EDITORIAL NEWSPAPER LAYOUT (REFERENCE IMAGE 1)
+         02. HERO SECTION — EXACT SWISS EDITORIAL NEWSPAPER (REFERENCE IMAGE 1)
+         Warm Cream Canvas + Solid Vermilion Red Backdrop + Real Portrait Cutout + Stamp
          ========================================================================== -->
-    <section id="hero" class="relative pt-6 sm:pt-10 pb-16 sm:pb-24 border-b border-[#0A0D14]/10">
+    <section id="hero" class="relative pt-6 sm:pt-10 pb-16 sm:pb-24 border-b-2 border-[#0A0A0A] editorial-grid">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -123,32 +151,32 @@
             
             <!-- Category Tag -->
             <div class="flex items-center gap-2.5 mb-4">
-              <span class="inline-block w-2.5 h-2.5 bg-[#E11D48]"></span>
-              <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#0A0D14]">
+              <span class="inline-block w-3 h-3 bg-[#D31419]"></span>
+              <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#0A0A0A]">
                 EXECUTIVE DOSSIER // 2026 EDITION
               </span>
             </div>
 
             <!-- Massive Headline -->
-            <h1 class="font-bebas text-7xl sm:text-8xl lg:text-9xl tracking-tight leading-[0.88] text-[#0A0D14] uppercase">
-              WEB3 <span class="text-[#E11D48] inline-block -translate-y-2">*</span><br>
+            <h1 class="font-bebas text-7xl sm:text-8xl lg:text-9xl tracking-tight leading-[0.88] text-[#0A0A0A] uppercase">
+              WEB3 <span class="text-[#D31419] inline-block -translate-y-2">*</span><br>
               GROWTH<br>
               ARCHITECT
             </h1>
 
             <!-- Subtitle Headline -->
-            <p class="font-sans font-extrabold text-base sm:text-lg lg:text-xl text-[#0A0D14] tracking-tight mt-6 uppercase leading-tight">
+            <p class="font-sans font-extrabold text-base sm:text-lg lg:text-xl text-[#0A0A0A] tracking-tight mt-6 uppercase leading-tight">
               I ARCHITECT WEB3 GROWTH & CREATIVE MEDIA THAT INSPIRE AND PERFORM.
             </p>
 
             <!-- Editorial Bio Description -->
-            <p class="text-[#0A0D14]/75 text-sm sm:text-base leading-relaxed mt-4 max-w-xl font-normal">
+            <p class="text-[#0A0A0A]/80 text-sm sm:text-base leading-relaxed mt-4 max-w-xl font-normal">
               I partner with pioneering blockchain protocols, DeFi systems, and AI networks to turn attention into active ecosystems through high-impact campaigns, community engineering, and motion design.
             </p>
 
             <!-- Action Buttons -->
             <div class="flex flex-wrap items-center gap-4 mt-8">
-              <a href="#work" class="inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-[#E11D48] text-white text-xs font-mono font-bold tracking-wider uppercase hover:bg-[#BE123C] transition-all duration-300 shadow-sm hover:shadow-lg hover:-translate-y-0.5">
+              <a href="#work" class="inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-[#D31419] text-white text-xs font-mono font-bold tracking-wider uppercase hover:bg-[#B30E13] border-2 border-[#0A0A0A] shadow-[4px_4px_0px_#0A0A0A] hover:shadow-[6px_6px_0px_#0A0A0A] hover:-translate-y-0.5 transition-all duration-200">
                 <span class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
                   <svg class="w-3 h-3 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -158,7 +186,7 @@
                 <span>VIEW SELECTED WORK</span>
               </a>
 
-              <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-[#0A0D14]/30 text-[#0A0D14] text-xs font-mono font-bold tracking-wider uppercase hover:border-[#0A0D14] hover:bg-[#0A0D14]/5 transition-all duration-300">
+              <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#FAF6EF] border-2 border-[#0A0A0A] text-[#0A0A0A] text-xs font-mono font-bold tracking-wider uppercase hover:bg-[#E8E1D5] shadow-[3px_3px_0px_#0A0A0A] hover:shadow-[4px_4px_0px_#0A0A0A] transition-all duration-200">
                 <span>GET IN TOUCH</span>
                 <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -168,15 +196,15 @@
             </div>
 
             <!-- Monospace Editorial Coordinates -->
-            <div class="pt-8 mt-8 border-t border-[#0A0D14]/10 flex flex-wrap items-center gap-6 text-xs font-mono text-[#0A0D14]/60">
-              <div><strong class="text-[#0A0D14]">BASE:</strong> DHAKA, BANGLADESH</div>
-              <div><strong class="text-[#0A0D14]">SPECIALTY:</strong> L1/L2 PROTOCOL TRACTION</div>
-              <div><strong class="text-[#0A0D14]">STATUS:</strong> AVAILABLE FOR ADVISORY</div>
+            <div class="pt-8 mt-8 border-t-2 border-[#0A0A0A]/15 flex flex-wrap items-center gap-6 text-xs font-mono text-[#0A0A0A]/70">
+              <div><strong class="text-[#0A0A0A]">BASE:</strong> DHAKA, BANGLADESH</div>
+              <div><strong class="text-[#0A0A0A]">SPECIALTY:</strong> L1/L2 PROTOCOL TRACTION</div>
+              <div><strong class="text-[#0A0A0A]">STATUS:</strong> AVAILABLE FOR ADVISORY</div>
             </div>
 
           </div>
 
-          <!-- Right Column: Editorial Portrait Cutout with Solid Red Color-Block Backdrop & Rotating Stamp -->
+          <!-- Right Column: Editorial Portrait Cutout with Solid Red Color-Block Backdrop & Rotating Stamp (Image 1) -->
           <div class="lg:col-span-5 flex justify-center">
             <div class="editorial-portrait-stage">
               
@@ -192,19 +220,19 @@
                 </div>
               </div>
 
-              <!-- Real Portrait Cutout -->
-              <div class="relative z-10 w-full overflow-hidden border-2 border-[#0A0D14] shadow-2xl bg-[#0A0D14]">
+              <!-- Real Portrait Cutout with Black Border & Shadow -->
+              <div class="relative z-10 w-full overflow-hidden border-3 border-[#0A0A0A] shadow-[8px_8px_0px_#0A0A0A] bg-[#0A0A0A]">
                 <img src="nadim_portrait.jpg" alt="Al Nadim Nabil" class="w-full h-auto object-cover object-top block grayscale contrast-110 hover:grayscale-0 transition-all duration-500">
               </div>
 
               <!-- Rotating Circular Stamp Seal (Reference Image 1) -->
-              <div class="absolute -bottom-8 -left-6 sm:-left-10 z-20 w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-white border-2 border-[#0A0D14] shadow-xl flex items-center justify-center p-1 cursor-pointer group">
+              <div class="absolute -bottom-8 -left-6 sm:-left-10 z-20 w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-[#FAF6EF] border-3 border-[#0A0A0A] shadow-[4px_4px_0px_#0A0A0A] flex items-center justify-center p-1 cursor-pointer group">
                 
                 <!-- Rotating SVG Circular Text -->
                 <div class="w-full h-full spin-stamp">
                   <svg viewBox="0 0 100 100" class="w-full h-full">
                     <path id="stampCirclePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none"></path>
-                    <text class="text-[7.2px] font-mono font-bold tracking-[0.18em] uppercase fill-[#0A0D14]">
+                    <text class="text-[7.2px] font-mono font-bold tracking-[0.18em] uppercase fill-[#0A0A0A]">
                       <textPath href="#stampCirclePath">
                         * WEB3 GROWTH * CREATIVE MEDIA * STRATEGY *
                       </textPath>
@@ -214,9 +242,9 @@
 
                 <!-- Center Stamp Badge Text -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
-                  <span class="font-mono text-[8px] uppercase tracking-wider text-[#0A0D14]/70 font-semibold leading-tight">OPEN FOR</span>
-                  <span class="font-bebas text-base sm:text-lg uppercase text-[#E11D48] leading-none font-bold">ADVISORY</span>
-                  <span class="font-mono text-[7px] text-[#0A0D14]/60 uppercase">2026</span>
+                  <span class="font-mono text-[8px] uppercase tracking-wider text-[#0A0A0A]/70 font-bold leading-tight">OPEN FOR</span>
+                  <span class="font-bebas text-base sm:text-lg uppercase text-[#D31419] leading-none font-bold">ADVISORY</span>
+                  <span class="font-mono text-[7px] text-[#0A0A0A]/70 font-semibold uppercase">2026</span>
                 </div>
 
               </div>
@@ -232,32 +260,32 @@
     <!-- ==========================================================================
          03. INVERTED HIGH-CONTRAST METRICS BAR (SOLID BLACK BAND FROM IMAGE 1)
          ========================================================================== -->
-    <section id="metrics" class="bg-[#0A0D14] text-white py-10 border-b border-[#0A0D14]">
+    <section id="metrics" class="bg-[#0A0A0A] text-white py-10 border-b-2 border-[#0A0A0A]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/15">
+        <div class="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/20">
           
           <div class="p-4 sm:p-6 text-center md:text-left">
-            <div class="font-bebas text-5xl sm:text-6xl text-[#E11D48] tracking-tight leading-none">8K+</div>
+            <div class="font-bebas text-5xl sm:text-6xl text-[#D31419] tracking-tight leading-none">8K+</div>
             <div class="font-sans font-bold text-xs uppercase tracking-wider text-white mt-2">X / TWITTER AUDIENCE</div>
-            <div class="font-mono text-[10px] text-white/50 tracking-wide mt-1">@Al_Nadim_nabil Verified Network</div>
+            <div class="font-mono text-[10px] text-white/60 tracking-wide mt-1">@Al_Nadim_nabil Verified Network</div>
           </div>
 
           <div class="p-4 sm:p-6 text-center md:text-left">
-            <div class="font-bebas text-5xl sm:text-6xl text-[#E11D48] tracking-tight leading-none">3.8M+</div>
+            <div class="font-bebas text-5xl sm:text-6xl text-[#D31419] tracking-tight leading-none">3.8M+</div>
             <div class="font-sans font-bold text-xs uppercase tracking-wider text-white mt-2">VERIFIED IMPRESSIONS</div>
-            <div class="font-mono text-[10px] text-white/50 tracking-wide mt-1">Organic Narrative Engagement</div>
+            <div class="font-mono text-[10px] text-white/60 tracking-wide mt-1">Organic Narrative Engagement</div>
           </div>
 
           <div class="p-4 sm:p-6 text-center md:text-left">
-            <div class="font-bebas text-5xl sm:text-6xl text-[#E11D48] tracking-tight leading-none">10+</div>
+            <div class="font-bebas text-5xl sm:text-6xl text-[#D31419] tracking-tight leading-none">10+</div>
             <div class="font-sans font-bold text-xs uppercase tracking-wider text-white mt-2">WEB3 PROTOCOLS SCALED</div>
-            <div class="font-mono text-[10px] text-white/50 tracking-wide mt-1">Monad, Injective, exSat & More</div>
+            <div class="font-mono text-[10px] text-white/60 tracking-wide mt-1">Monad, Injective, exSat & More</div>
           </div>
 
           <div class="p-4 sm:p-6 text-center md:text-left">
-            <div class="font-bebas text-5xl sm:text-6xl text-[#E11D48] tracking-tight leading-none">100+</div>
+            <div class="font-bebas text-5xl sm:text-6xl text-[#D31419] tracking-tight leading-none">100+</div>
             <div class="font-sans font-bold text-xs uppercase tracking-wider text-white mt-2">CREATIVE DELIVERABLES</div>
-            <div class="font-mono text-[10px] text-white/50 tracking-wide mt-1">60FPS Motion, Graphics & Video</div>
+            <div class="font-mono text-[10px] text-white/60 tracking-wide mt-1">60FPS Motion, Graphics & Video</div>
           </div>
 
         </div>
@@ -267,19 +295,19 @@
     <!-- ==========================================================================
          04. SELECTED WORK (EDITORIAL CARD GRID FROM REFERENCE IMAGE 1)
          ========================================================================== -->
-    <section id="work" class="py-16 sm:py-24 border-b border-[#0A0D14]/10 bg-white">
+    <section id="work" class="py-16 sm:py-24 border-b-2 border-[#0A0A0A] bg-[#FAF6EF]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <!-- Section Header -->
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-6 border-b-2 border-[#0A0D14]">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-6 border-b-2 border-[#0A0A0A]">
           <div>
-            <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#E11D48] block mb-1">PROVEN TRACK RECORD</span>
-            <h2 class="font-bebas text-5xl sm:text-6xl lg:text-7xl tracking-tight text-[#0A0D14] leading-none uppercase">
+            <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#D31419] block mb-1">PROVEN TRACK RECORD</span>
+            <h2 class="font-bebas text-5xl sm:text-6xl lg:text-7xl tracking-tight text-[#0A0A0A] leading-none uppercase">
               SELECTED WORK
             </h2>
           </div>
           <div class="mt-4 sm:mt-0">
-            <a href="https://x.com/Al_Nadim_nabil" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 font-mono text-xs font-bold uppercase tracking-wider text-[#0A0D14] hover:text-[#E11D48] transition-colors">
+            <a href="https://x.com/Al_Nadim_nabil" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 font-mono text-xs font-bold uppercase tracking-wider text-[#0A0A0A] hover:text-[#D31419] transition-colors">
               <span>VIEW ALL PROTOCOL THREADS</span>
               <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="7" y1="17" x2="17" y2="7"></line>
@@ -293,69 +321,69 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           
           <!-- Card 1: Monad (Dark Editorial Card) -->
-          <div class="bg-[#0A0D14] text-white p-8 flex flex-col justify-between border-2 border-[#0A0D14] group hover:-translate-y-1 transition-all duration-300">
+          <div class="bg-[#0A0A0A] text-white p-8 flex flex-col justify-between border-3 border-[#0A0A0A] shadow-[6px_6px_0px_#D31419] group hover:-translate-y-1 transition-all duration-300">
             <div>
               <div class="flex items-center justify-between mb-8">
-                <span class="font-mono text-xs text-[#E11D48] uppercase tracking-widest font-bold">L1 INFRASTRUCTURE</span>
-                <span class="font-mono text-xs text-white/50">2024</span>
+                <span class="font-mono text-xs text-[#D31419] uppercase tracking-widest font-bold">L1 INFRASTRUCTURE</span>
+                <span class="font-mono text-xs text-white/60">2024</span>
               </div>
-              <h3 class="font-bebas text-4xl sm:text-5xl tracking-tight leading-none uppercase text-white group-hover:text-[#E11D48] transition-colors">
+              <h3 class="font-bebas text-4xl sm:text-5xl tracking-tight leading-none uppercase text-white group-hover:text-[#D31419] transition-colors">
                 MONAD // PARALLEL EVM
               </h3>
-              <p class="text-white/70 text-xs sm:text-sm mt-4 leading-relaxed font-sans">
+              <p class="text-white/80 text-xs sm:text-sm mt-4 leading-relaxed font-sans">
                 High-throughput execution narrative, community activation, and localized creator network growth targeting 10,000 TPS adoption.
               </p>
             </div>
-            <div class="pt-8 mt-8 border-t border-white/10 flex items-center justify-between">
-              <span class="font-mono text-xs text-white/60">450K+ IMPRESSIONS</span>
-              <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white group-hover:bg-[#E11D48] transition-colors">
+            <div class="pt-8 mt-8 border-t border-white/20 flex items-center justify-between">
+              <span class="font-mono text-xs text-white/70">450K+ IMPRESSIONS</span>
+              <span class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white group-hover:bg-[#D31419] transition-colors">
                 ↗
               </span>
             </div>
           </div>
 
-          <!-- Card 2: exSat Network (Crisp White with Red Diagonal Slash) -->
-          <div class="bg-[#F8FAFC] text-[#0A0D14] p-8 flex flex-col justify-between border-2 border-[#0A0D14] relative overflow-hidden group hover:-translate-y-1 transition-all duration-300">
+          <!-- Card 2: exSat Network (Cream Card with Red Diagonal Slash) -->
+          <div class="bg-[#F4EFE6] text-[#0A0A0A] p-8 flex flex-col justify-between border-3 border-[#0A0A0A] shadow-[6px_6px_0px_#0A0A0A] relative overflow-hidden group hover:-translate-y-1 transition-all duration-300">
             <!-- Diagonal Red Accent Tag -->
-            <div class="absolute -top-10 -right-10 w-24 h-24 bg-[#E11D48] transform rotate-45 pointer-events-none"></div>
+            <div class="absolute -top-10 -right-10 w-24 h-24 bg-[#D31419] transform rotate-45 pointer-events-none"></div>
             
             <div>
               <div class="flex items-center justify-between mb-8">
-                <span class="font-mono text-xs text-[#E11D48] uppercase tracking-widest font-bold">BITCOIN DOCKING LAYER</span>
-                <span class="font-mono text-xs text-[#0A0D14]/50">2024</span>
+                <span class="font-mono text-xs text-[#D31419] uppercase tracking-widest font-bold">BITCOIN DOCKING LAYER</span>
+                <span class="font-mono text-xs text-[#0A0A0A]/60">2024</span>
               </div>
-              <h3 class="font-bebas text-4xl sm:text-5xl tracking-tight leading-none uppercase text-[#0A0D14] group-hover:text-[#E11D48] transition-colors">
+              <h3 class="font-bebas text-4xl sm:text-5xl tracking-tight leading-none uppercase text-[#0A0A0A] group-hover:text-[#D31419] transition-colors">
                 EXSAT NETWORK
               </h3>
-              <p class="text-[#0A0D14]/70 text-xs sm:text-sm mt-4 leading-relaxed font-sans">
+              <p class="text-[#0A0A0A]/80 text-xs sm:text-sm mt-4 leading-relaxed font-sans">
                 Strategic marketing campaigns and technical explainers bridging Bitcoin consensus with EVM smart contracts.
               </p>
             </div>
-            <div class="pt-8 mt-8 border-t border-[#0A0D14]/10 flex items-center justify-between">
-              <span class="font-mono text-xs text-[#0A0D14]/60">TOP CAMPAIGN TRACTION</span>
-              <span class="w-8 h-8 rounded-full bg-[#0A0D14]/5 flex items-center justify-center text-[#0A0D14] group-hover:bg-[#E11D48] group-hover:text-white transition-colors">
+            <div class="pt-8 mt-8 border-t border-[#0A0A0A]/20 flex items-center justify-between">
+              <span class="font-mono text-xs text-[#0A0A0A]/70">TOP CAMPAIGN TRACTION</span>
+              <span class="w-8 h-8 rounded-full bg-[#0A0A0A]/10 flex items-center justify-center text-[#0A0A0A] group-hover:bg-[#D31419] group-hover:text-white transition-colors">
                 ↗
               </span>
             </div>
           </div>
 
           <!-- Card 3: Injective Protocol (High-Contrast Black Card) -->
-          <div class="bg-[#0A0D14] text-white p-8 flex flex-col justify-between border-2 border-[#0A0D14] group hover:-translate-y-1 transition-all duration-300">
+          <div class="bg-[#0A0A0A] text-white p-8 flex flex-col justify-between border-3 border-[#0A0A0A] shadow-[6px_6px_0px_#D31419] group hover:-translate-y-1 transition-all duration-300">
             <div>
               <div class="flex items-center justify-between mb-8">
-                <span class="font-mono text-xs text-[#E11D48] uppercase tracking-widest font-bold">DEFI & DERIVATIVES</span>
-                <span class="font-mono text-xs text-white/50">2024</span>
+                <span class="font-mono text-xs text-[#D31419] uppercase tracking-widest font-bold">DEFI & DERIVATIVES</span>
+                <span class="font-mono text-xs text-white/60">2024</span>
               </div>
-              <h3 class="font-bebas text-4xl sm:text-5xl tracking-tight leading-none uppercase text-white group-hover:text-[#E11D48] transition-colors">
+              <h3 class="font-bebas text-4xl sm:text-5xl tracking-tight leading-none uppercase text-white group-hover:text-[#D31419] transition-colors">
                 INJECTIVE PROTOCOL
               </h3>
-              <p class="text-white/70 text-xs sm:text-sm mt-4 leading-relaxed font-sans">
+              <p class="text-white/80 text-xs sm:text-sm mt-4 leading-relaxed font-sans">
                 On-chain ecosystem expansion, liquidity campaign amplification, and community ambassador coordination.
               </p>
             </div>
-            <div class="pt-8 mt-8 border-t border-white/10 flex items-center justify-between">
-              <span class="font-mono text-xs text-white/60">GLOBAL AMBASSADOR NETWORK</span>
-              <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white group-hover:bg-[#E11D48] transition-colors">
+            <div class="pt-8 mt-8 border-t border-white/20 flex items-center justify-between">
+              <span class="font-mono text-xs text-white/70">GLOBAL AMBASSADOR NETWORK</span>
+              <span class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white group-hover:bg-[#D31419] transition-colors">
                 ↗
               </span>
             </div>
@@ -368,18 +396,19 @@
 
     <!-- ==========================================================================
          05. SERVICES SECTION (EXACT SWISS SPLIT LAYOUT FROM REFERENCE IMAGE 1)
+         Left Solid Red Box + Right 4-Pillar Grid
          ========================================================================== -->
-    <section id="services" class="py-16 sm:py-24 border-b border-[#0A0D14]/10 bg-[#F8FAFC]">
+    <section id="services" class="py-16 sm:py-24 border-b-2 border-[#0A0A0A] bg-[#F4EFE6]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
           <!-- Left: High-Impact Solid RED Square Box (Reference Image 1) -->
-          <div class="lg:col-span-4 bg-[#E11D48] text-white p-10 flex flex-col justify-between border-2 border-[#0A0D14] shadow-md min-h-[340px]">
+          <div class="lg:col-span-4 bg-[#D31419] text-white p-10 flex flex-col justify-between border-3 border-[#0A0A0A] shadow-[6px_6px_0px_#0A0A0A] min-h-[360px]">
             <div>
-              <span class="font-mono text-xs uppercase tracking-widest text-white/80 font-bold block mb-2">WHAT I DELIVER</span>
-              <div class="w-10 h-1 bg-white mb-6"></div>
-              <p class="font-sans text-sm text-white/90 leading-relaxed font-medium">
+              <span class="font-mono text-xs uppercase tracking-widest text-white/90 font-bold block mb-2">WHAT I DELIVER</span>
+              <div class="w-12 h-1 bg-white mb-6"></div>
+              <p class="font-sans text-sm text-white leading-relaxed font-medium">
                 End-to-end Web3 growth architecture: combining technical blockchain narrative positioning with high-production creative media and creator networks.
               </p>
             </div>
@@ -392,83 +421,83 @@
             </div>
           </div>
 
-          <!-- Right: 2x2 Grid of Clean White Capability Cards (Reference Image 1) -->
+          <!-- Right: 2x2 Grid of Clean Cream Capability Cards (Reference Image 1) -->
           <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
             
             <!-- Service 1: Web3 Growth & Marketing -->
-            <div class="bg-white p-8 border-2 border-[#0A0D14] hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+            <div class="bg-[#FAF6EF] p-8 border-3 border-[#0A0A0A] shadow-[4px_4px_0px_#0A0A0A] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
               <div>
-                <div class="w-12 h-12 rounded-full border border-[#0A0D14]/20 flex items-center justify-center text-[#E11D48] mb-6">
-                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <div class="w-12 h-12 rounded-full border-2 border-[#0A0A0A] bg-[#F4EFE6] flex items-center justify-center text-[#D31419] mb-6">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
                   </svg>
                 </div>
-                <h3 class="font-bebas text-2xl tracking-wide uppercase text-[#0A0D14]">WEB3 GROWTH STRATEGY</h3>
-                <p class="text-xs sm:text-sm text-[#0A0D14]/70 mt-3 leading-relaxed">
+                <h3 class="font-bebas text-2xl tracking-wide uppercase text-[#0A0A0A]">WEB3 GROWTH STRATEGY</h3>
+                <p class="text-xs sm:text-sm text-[#0A0A0A]/80 mt-3 leading-relaxed">
                   Campaign planning, organic X growth, user acquisition, and full-funnel narrative positioning that converts awareness into token utility and protocol adoption.
                 </p>
               </div>
-              <div class="mt-6 pt-4 border-t border-[#0A0D14]/10 font-mono text-[10px] text-[#0A0D14]/50 uppercase tracking-widest font-semibold">
+              <div class="mt-6 pt-4 border-t border-[#0A0A0A]/20 font-mono text-[10px] text-[#0A0A0A]/60 uppercase tracking-widest font-bold">
                 AUDIENCE EXPANSION // 5-STAGE FUNNEL
               </div>
             </div>
 
             <!-- Service 2: Creative Media & Video -->
-            <div class="bg-white p-8 border-2 border-[#0A0D14] hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+            <div class="bg-[#FAF6EF] p-8 border-3 border-[#0A0A0A] shadow-[4px_4px_0px_#0A0A0A] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
               <div>
-                <div class="w-12 h-12 rounded-full border border-[#0A0D14]/20 flex items-center justify-center text-[#E11D48] mb-6">
-                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <div class="w-12 h-12 rounded-full border-2 border-[#0A0A0A] bg-[#F4EFE6] flex items-center justify-center text-[#D31419] mb-6">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polygon points="23 7 16 12 23 17 23 7"></polygon>
                     <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
                   </svg>
                 </div>
-                <h3 class="font-bebas text-2xl tracking-wide uppercase text-[#0A0D14]">CREATIVE MEDIA & VIDEO</h3>
-                <p class="text-xs sm:text-sm text-[#0A0D14]/70 mt-3 leading-relaxed">
+                <h3 class="font-bebas text-2xl tracking-wide uppercase text-[#0A0A0A]">CREATIVE MEDIA & VIDEO</h3>
+                <p class="text-xs sm:text-sm text-[#0A0A0A]/80 mt-3 leading-relaxed">
                   Cinematic 60FPS video editing, motion graphics, promotional launch trailers, and short-form video reels that capture instant audience mindshare.
                 </p>
               </div>
-              <div class="mt-6 pt-4 border-t border-[#0A0D14]/10 font-mono text-[10px] text-[#0A0D14]/50 uppercase tracking-widest font-semibold">
+              <div class="mt-6 pt-4 border-t border-[#0A0A0A]/20 font-mono text-[10px] text-[#0A0A0A]/60 uppercase tracking-widest font-bold">
                 AFTER EFFECTS // PREMIERE // 4K REELS
               </div>
             </div>
 
             <!-- Service 3: Community Architecture -->
-            <div class="bg-white p-8 border-2 border-[#0A0D14] hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+            <div class="bg-[#FAF6EF] p-8 border-3 border-[#0A0A0A] shadow-[4px_4px_0px_#0A0A0A] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
               <div>
-                <div class="w-12 h-12 rounded-full border border-[#0A0D14]/20 flex items-center justify-center text-[#E11D48] mb-6">
-                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <div class="w-12 h-12 rounded-full border-2 border-[#0A0A0A] bg-[#F4EFE6] flex items-center justify-center text-[#D31419] mb-6">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                     <circle cx="9" cy="7" r="4"></circle>
                     <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
                     <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                   </svg>
                 </div>
-                <h3 class="font-bebas text-2xl tracking-wide uppercase text-[#0A0D14]">COMMUNITY ARCHITECTURE</h3>
-                <p class="text-xs sm:text-sm text-[#0A0D14]/70 mt-3 leading-relaxed">
-                  High-retention Discord & Telegram ecosystem management, ambassador program creation, X Spaces / AMA hosting, and active member onboarding.
+                <h3 class="font-bebas text-2xl tracking-wide uppercase text-[#0A0A0A]">COMMUNITY ARCHITECTURE</h3>
+                <p class="text-xs sm:text-sm text-[#0A0A0A]/80 mt-3 leading-relaxed">
+                  High-retention Discord & Telegram ecosystem management, ambassador program design, X Spaces / AMA hosting, and active member onboarding.
                 </p>
               </div>
-              <div class="mt-6 pt-4 border-t border-[#0A0D14]/10 font-mono text-[10px] text-[#0A0D14]/50 uppercase tracking-widest font-semibold">
+              <div class="mt-6 pt-4 border-t border-[#0A0A0A]/20 font-mono text-[10px] text-[#0A0A0A]/60 uppercase tracking-widest font-bold">
                 TELEGRAM // DISCORD // AMBASSADORS
               </div>
             </div>
 
             <!-- Service 4: Business Development & KOL Syndicates -->
-            <div class="bg-white p-8 border-2 border-[#0A0D14] hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+            <div class="bg-[#FAF6EF] p-8 border-3 border-[#0A0A0A] shadow-[4px_4px_0px_#0A0A0A] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
               <div>
-                <div class="w-12 h-12 rounded-full border border-[#0A0D14]/20 flex items-center justify-center text-[#E11D48] mb-6">
-                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <div class="w-12 h-12 rounded-full border-2 border-[#0A0A0A] bg-[#F4EFE6] flex items-center justify-center text-[#D31419] mb-6">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"></circle>
                     <line x1="2" y1="12" x2="22" y2="12"></line>
                     <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                   </svg>
                 </div>
-                <h3 class="font-bebas text-2xl tracking-wide uppercase text-[#0A0D14]">BD & CREATOR OUTREACH</h3>
-                <p class="text-xs sm:text-sm text-[#0A0D14]/70 mt-3 leading-relaxed">
+                <h3 class="font-bebas text-2xl tracking-wide uppercase text-[#0A0A0A]">BD & CREATOR OUTREACH</h3>
+                <p class="text-xs sm:text-sm text-[#0A0A0A]/80 mt-3 leading-relaxed">
                   Connecting protocols with institutional creators, KOL networks, strategic ecosystem alliances, and co-marketing partners.
                 </p>
               </div>
-              <div class="mt-6 pt-4 border-t border-[#0A0D14]/10 font-mono text-[10px] text-[#0A0D14]/50 uppercase tracking-widest font-semibold">
+              <div class="mt-6 pt-4 border-t border-[#0A0A0A]/20 font-mono text-[10px] text-[#0A0A0A]/60 uppercase tracking-widest font-bold">
                 KOL SYNDICATES // STRATEGIC ALLIANCES
               </div>
             </div>
@@ -481,43 +510,71 @@
     </section>
 
     <!-- ==========================================================================
-         06. ANIME MASCOT SENTINEL LAB (INSPIRED BY REFERENCE IMAGE 2)
+         06. ANIME MASCOT SENTINEL LAB (AUTHENTIC CARTOON MANGA FROM REFERENCE IMAGE 2)
+         Manga Stickers + Hazard Tape + Role Sticker Card + Highlighter Oval + Dialogue
          ========================================================================== -->
-    <section id="mascot" class="py-16 sm:py-24 border-b border-[#0A0D14]/10 bg-white relative overflow-hidden">
+    <section id="mascot" class="py-16 sm:py-24 border-b-2 border-[#0A0A0A] bg-[#FAF6EF] relative overflow-hidden">
       
-      <!-- Subtle Cyber Grid Background -->
-      <div class="absolute inset-0 cyber-dots pointer-events-none opacity-40"></div>
+      <!-- Anime Manga Dotted Grid Background (Reference Image 2) -->
+      <div class="absolute inset-0 manga-grid pointer-events-none opacity-40"></div>
 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <!-- Header: Recruitment & Anime Manga Title -->
-        <div class="text-center mb-10">
-          <div class="inline-block px-4 py-1 rounded-full bg-[#0A0D14] text-[#84CC16] font-mono text-xs font-bold uppercase tracking-widest mb-3">
-            RECRUITMENT // COMPANION SCOUT
-          </div>
-          <h2 class="font-bebas text-5xl sm:text-6xl lg:text-7xl tracking-tight text-[#0A0D14] uppercase leading-none">
-            Looking For client!! <span class="text-[#84CC16] bg-[#0A0D14] px-3 py-1 rounded inline-block transform -rotate-1">hunter</span>
-          </h2>
+        <!-- Top Tag: recruitment (Reference Image 2) -->
+        <div class="text-center mb-4">
+          <span class="font-mono text-xs uppercase tracking-widest text-[#0A0A0A]/60 font-bold">
+            recruitment
+          </span>
         </div>
 
-        <!-- Green/Black Hazard Tape Stripes (Reference Image 2) -->
-        <div class="w-full h-7 hazard-tape border-y-2 border-[#0A0D14] flex items-center justify-center mb-10">
-          <span class="bg-[#0A0D14] text-[#84CC16] font-mono text-xs font-black uppercase tracking-widest px-4 py-0.5">
-            SEARCHING PROTOCOLS......
+        <!-- Manga Comic Sticker Title (Exact Image 2 Artwork Layout) -->
+        <div class="text-center mb-8">
+          <div class="inline-flex flex-col items-center">
+            
+            <!-- Top Line: Looking For (Green Comic Badge) + client!! (Fat White Sticker) -->
+            <div class="flex items-center justify-center gap-3 flex-wrap">
+              <span class="manga-sticker-green transform -rotate-3">
+                Looking For
+              </span>
+              <span class="manga-sticker-white text-5xl sm:text-7xl leading-none">
+                client!!
+              </span>
+              <!-- Anime Sweat / Sparkle Marks -->
+              <span class="text-3xl font-black text-[#84CC16] hidden sm:inline-block">///</span>
+            </div>
+
+            <!-- Bottom Line: hunter. (Massive Black Sticker with Green Target on Period) -->
+            <div class="mt-2 flex items-center justify-center gap-2">
+              <span class="font-bebas text-7xl sm:text-9xl text-[#0A0A0A] tracking-tight leading-none font-black drop-shadow-md">
+                hunter
+              </span>
+              <!-- Circular Target Emblem (Reference Image 2) -->
+              <span class="w-8 h-8 rounded-full bg-[#84CC16] border-3 border-[#0A0A0A] flex items-center justify-center font-mono text-xs font-black text-[#0A0A0A] shadow-sm transform -translate-y-2">
+                ✛
+              </span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Green/Black 45° Hazard Tape Stripes (Reference Image 2) -->
+        <div class="w-full h-8 hazard-tape border-y-2 border-[#0A0A0A] flex items-center justify-center mb-10 shadow-sm">
+          <span class="bg-[#0A0A0A] text-[#84CC16] font-mono text-xs font-black uppercase tracking-widest px-5 py-0.5 border border-[#84CC16]">
+            searching......
           </span>
         </div>
 
         <!-- Anime Character Stage: Owl Sentinel Companion (Reference Image 2 Format) -->
-        <div class="max-w-3xl mx-auto bg-[#F8FAFC] border-3 border-[#0A0D14] rounded-2xl p-6 sm:p-10 shadow-2xl relative">
+        <div class="max-w-4xl mx-auto bg-[#F4EFE6] border-4 border-[#0A0A0A] rounded-3xl p-6 sm:p-12 shadow-[8px_8px_0px_#0A0A0A] relative">
           
-          <!-- Manga Speech Bubble -->
-          <div class="bg-white border-2 border-[#0A0D14] rounded-2xl p-4 sm:p-5 shadow-md mb-8 relative max-w-lg mx-auto text-center">
-            <span class="font-mono text-xs text-[#E11D48] font-bold uppercase block mb-1">SENTINEL RADAR COMMS:</span>
-            <p id="mascotSpeechContent" class="font-sans font-bold text-sm sm:text-base text-[#0A0D14] leading-snug">
-              "Searching for innovative protocols to scale!! Hunter mode active."
+          <!-- Manga Speech Bubble with Triangle Tail -->
+          <div class="bg-white border-3 border-[#0A0A0A] rounded-2xl p-4 sm:p-5 shadow-[4px_4px_0px_#0A0A0A] mb-8 relative max-w-lg mx-auto text-center">
+            <span class="font-mono text-xs text-[#D31419] font-black uppercase block mb-1">SENTINEL RADAR COMMS:</span>
+            <p id="mascotSpeechContent" class="font-sans font-bold text-sm sm:text-base text-[#0A0A0A] leading-snug">
+              "Looking for innovative protocols to scale!! Hunter mode active."
             </p>
             <!-- Speech bubble triangle tail -->
-            <div class="absolute -bottom-2.5 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white border-r-2 border-b-2 border-[#0A0D14] rotate-45"></div>
+            <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-5 h-5 bg-white border-r-3 border-b-3 border-[#0A0A0A] rotate-45"></div>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
@@ -525,9 +582,11 @@
             <!-- Left: Mascot Artwork with Glasses / Anime Scout Style -->
             <div class="md:col-span-5 flex flex-col items-center justify-center">
               <div id="mascotInteractiveTrigger" class="relative cursor-pointer group p-4">
-                <img id="mascotCleanSprite" src="owl_clean.png" alt="Anime Owl Sentinel Companion" class="w-48 sm:w-56 h-auto drop-shadow-xl transform group-hover:scale-105 transition-transform duration-300">
-                <div class="absolute bottom-2 bg-[#0A0D14] text-[#84CC16] font-mono text-[10px] font-bold px-3 py-1 rounded-full border border-[#84CC16]">
-                  CLICK TO ENGAGE SCOUT
+                <img id="mascotCleanSprite" src="owl_clean.png" alt="Anime Owl Sentinel Companion" class="w-52 sm:w-60 h-auto drop-shadow-2xl transform group-hover:scale-105 transition-transform duration-300">
+                <div class="mt-4 text-center">
+                  <span class="inline-block bg-[#0A0A0A] text-[#84CC16] font-mono text-[10px] font-black px-4 py-1 rounded-full border-2 border-[#84CC16] shadow-sm">
+                    CLICK SCOUT TO SCAN PROTOCOLS
+                  </span>
                 </div>
               </div>
             </div>
@@ -535,32 +594,35 @@
             <!-- Right: Manga Role Sticker Card & Highlighter Loop (Reference Image 2) -->
             <div class="md:col-span-7 space-y-6">
               
-              <!-- Role Sticker Card -->
-              <div class="bg-[#0A0D14] text-white p-6 rounded-2xl border-2 border-[#84CC16] shadow-md">
-                <div class="inline-block bg-[#84CC16] text-[#0A0D14] font-mono text-xs font-black uppercase px-3 py-1 rounded-md mb-4">
-                  ROLE
+              <!-- Role Sticker Card (Reference Image 2) -->
+              <div class="bg-[#0A0A0A] text-white p-7 rounded-2xl border-3 border-[#84CC16] shadow-[6px_6px_0px_#0A0A0A]">
+                
+                <!-- Cute Bubble Badge: role (Reference Image 2) -->
+                <div class="inline-block bg-[#84CC16] text-[#0A0A0A] font-sans font-black text-sm uppercase px-4 py-1 rounded-full mb-4 shadow-sm">
+                  role
                 </div>
-                <ul class="space-y-3 font-sans text-xs sm:text-sm text-white/90">
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-[#84CC16] font-bold text-base leading-none">•</span>
-                    <span>Find & approach high-potential Web3 protocols.</span>
+
+                <ul class="space-y-3 font-sans text-xs sm:text-sm text-white/95">
+                  <li class="flex items-start gap-3">
+                    <span class="text-[#84CC16] font-black text-base leading-none">•</span>
+                    <span>Find & approach potential high-growth Web3 protocols.</span>
                   </li>
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-[#84CC16] font-bold text-base leading-none">•</span>
+                  <li class="flex items-start gap-3">
+                    <span class="text-[#84CC16] font-black text-base leading-none">•</span>
                     <span>Generate organic leads for narrative campaigns & creator syndicates.</span>
                   </li>
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-[#84CC16] font-bold text-base leading-none">•</span>
-                    <span>Connect protocols with dedicated on-chain audiences.</span>
+                  <li class="flex items-start gap-3">
+                    <span class="text-[#84CC16] font-black text-base leading-none">•</span>
+                    <span>Connect protocols with our dedicated audience and team.</span>
                   </li>
                 </ul>
               </div>
 
-              <!-- Neon Lime Highlighter Circle (Reference Image 2) -->
+              <!-- Neon Lime Highlighter Circle with Crosshair (Reference Image 2) -->
               <div class="flex items-center justify-center sm:justify-start">
-                <div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border-2 border-[#84CC16] bg-[#84CC16]/10 text-[#0A0D14] font-mono text-xs sm:text-sm font-bold">
-                  <span class="w-2 h-2 rounded-full bg-[#84CC16] animate-pulse"></span>
-                  <span>Web3 Growth & Video Editing</span>
+                <div class="highlighter-loop inline-flex items-center gap-3 text-[#0A0A0A] font-mono text-xs sm:text-sm font-bold border-2 border-[#84CC16]">
+                  <span class="w-2.5 h-2.5 rounded-full bg-[#84CC16] animate-pulse"></span>
+                  <span class="text-sm font-black">+ Graphics design & Video editing</span>
                   <span class="text-[#84CC16] font-black">✓</span>
                 </div>
               </div>
@@ -570,18 +632,18 @@
           </div>
 
           <!-- Bottom Manga Callout Bar (Exact Text from Reference Image 2) -->
-          <div class="mt-8 pt-6 border-t-2 border-[#0A0D14] bg-[#0A0D14] text-white p-5 rounded-xl text-center">
-            <p class="font-sans font-bold text-sm sm:text-base text-white">
-              If you are interested, feel free to <span class="text-[#84CC16] underline">DM me!</span>
+          <div class="mt-8 pt-6 border-t-3 border-[#0A0A0A] bg-[#0A0A0A] text-white p-6 rounded-2xl text-center shadow-[4px_4px_0px_#84CC16]">
+            <p class="font-sans font-bold text-base sm:text-lg text-white">
+              If you are interested, feel free to <span class="text-[#84CC16] underline font-black">DM me!</span>
             </p>
-            <p class="font-sans text-xs text-white/70 mt-1">
+            <p class="font-sans text-xs text-white/80 mt-1">
               Let's create opportunities together.
             </p>
-            <div class="flex flex-wrap items-center justify-center gap-4 mt-4">
-              <a href="https://t.me/Nabil_vai!!" target="_blank" rel="noopener noreferrer" class="px-5 py-2 rounded-full bg-[#84CC16] text-[#0A0D14] font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#a3e635] transition-colors">
+            <div class="flex flex-wrap items-center justify-center gap-4 mt-5">
+              <a href="https://t.me/Nabil_vai!!" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 rounded-full bg-[#84CC16] text-[#0A0A0A] font-mono text-xs font-black uppercase tracking-wider hover:bg-[#a3e635] border-2 border-[#0A0A0A] shadow-[2px_2px_0px_#0A0A0A] transition-all">
                 TELEGRAM @NABIL_VAI!!
               </a>
-              <a href="https://x.com/Al_Nadim_nabil" target="_blank" rel="noopener noreferrer" class="px-5 py-2 rounded-full bg-white text-[#0A0D14] font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#F8FAFC] transition-colors">
+              <a href="https://x.com/Al_Nadim_nabil" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 rounded-full bg-white text-[#0A0A0A] font-mono text-xs font-black uppercase tracking-wider hover:bg-[#FAF6EF] border-2 border-[#0A0A0A] shadow-[2px_2px_0px_#0A0A0A] transition-all">
                 X (TWITTER) @AL_NADIM_NABIL
               </a>
             </div>
@@ -595,30 +657,30 @@
     <!-- ==========================================================================
          07. CREATIVE MEDIA STUDIO (HIGH-PRODUCTION VIDEO REEL SHOWCASE)
          ========================================================================== -->
-    <section id="media" class="py-16 sm:py-24 border-b border-[#0A0D14]/10 bg-[#F8FAFC]">
+    <section id="media" class="py-16 sm:py-24 border-b-2 border-[#0A0A0A] bg-[#FAF6EF]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-6 border-b-2 border-[#0A0D14]">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-6 border-b-2 border-[#0A0A0A]">
           <div>
-            <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#E11D48] block mb-1">VISUAL STORYTELLING</span>
-            <h2 class="font-bebas text-5xl sm:text-6xl lg:text-7xl tracking-tight text-[#0A0D14] leading-none uppercase">
+            <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#D31419] block mb-1">VISUAL STORYTELLING</span>
+            <h2 class="font-bebas text-5xl sm:text-6xl lg:text-7xl tracking-tight text-[#0A0A0A] leading-none uppercase">
               CREATIVE MEDIA STUDIO
             </h2>
           </div>
-          <div class="mt-4 sm:mt-0 font-mono text-xs text-[#0A0D14]/60">
+          <div class="mt-4 sm:mt-0 font-mono text-xs text-[#0A0A0A]/70 font-bold">
             60FPS MOTION GRAPHICS & PROMOTIONAL TRAILERS
           </div>
         </div>
 
         <!-- 16:9 Motion Reel Player -->
-        <div class="bg-[#0A0D14] rounded-2xl border-3 border-[#0A0D14] overflow-hidden shadow-2xl">
+        <div class="bg-[#0A0A0A] rounded-2xl border-3 border-[#0A0A0A] overflow-hidden shadow-[8px_8px_0px_#0A0A0A]">
           
           <div class="relative aspect-video w-full bg-black flex items-center justify-center overflow-hidden">
             <canvas id="motionStudioCanvas" class="w-full h-full block"></canvas>
             
             <!-- Video Overlay Badge -->
             <div class="absolute top-4 left-4 flex items-center gap-2 z-20">
-              <span class="px-3 py-1 rounded bg-[#E11D48] text-white font-mono text-[10px] font-bold uppercase tracking-wider">
+              <span class="px-3 py-1 rounded bg-[#D31419] text-white font-mono text-[10px] font-bold uppercase tracking-wider">
                 60FPS REEL ACTIVE
               </span>
               <span id="currentTrackBadge" class="px-3 py-1 rounded bg-white/10 text-white font-mono text-[10px] uppercase backdrop-blur-sm">
@@ -629,7 +691,7 @@
             <!-- Controls overlay -->
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between z-20 gap-4">
               <div class="flex items-center gap-3">
-                <button id="studioPlayPauseBtn" class="px-4 py-1.5 rounded-full bg-[#E11D48] text-white font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#BE123C] transition-colors flex items-center gap-1.5 shadow-md">
+                <button id="studioPlayPauseBtn" class="px-4 py-1.5 rounded-full bg-[#D31419] text-white font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#B30E13] transition-colors flex items-center gap-1.5 shadow-md">
                   <span id="playIcon" class="hidden">▶</span>
                   <span id="pauseIcon">❚❚</span>
                   <span id="playStatusText">PAUSE</span>
@@ -639,7 +701,7 @@
                 </span>
               </div>
               <div class="flex items-center gap-2">
-                <button id="audioToggleBtn" class="px-3 py-1.5 rounded-full bg-white/20 text-white font-mono text-xs hover:bg-[#E11D48] transition-colors backdrop-blur-sm" title="Toggle Synthesizer Sound">
+                <button id="audioToggleBtn" class="px-3 py-1.5 rounded-full bg-white/20 text-white font-mono text-xs hover:bg-[#D31419] transition-colors backdrop-blur-sm" title="Toggle Synthesizer Sound">
                   AUDIO: ON
                 </button>
               </div>
@@ -647,26 +709,26 @@
 
             <!-- Timeline Scrubber Bar -->
             <div id="timelineScrubber" class="absolute bottom-0 left-0 right-0 h-1.5 bg-white/20 cursor-pointer z-30">
-              <div id="timelineProgress" class="h-full bg-[#E11D48] w-0 transition-all"></div>
+              <div id="timelineProgress" class="h-full bg-[#D31419] w-0 transition-all"></div>
             </div>
           </div>
 
           <!-- Video Scene Selector Bar -->
-          <div class="p-4 sm:p-6 bg-[#0A0D14] border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <button class="scene-tab-btn text-left p-3 rounded-lg border border-white/10 hover:border-[#E11D48] bg-[#E11D48] transition-all text-white active" data-scene="0">
-              <div class="font-mono text-[10px] text-white/70 font-bold">SCENE 01</div>
+          <div class="p-4 sm:p-6 bg-[#0A0A0A] border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <button class="scene-tab-btn text-left p-3 rounded-lg border border-white/20 hover:border-[#D31419] bg-[#D31419] transition-all text-white active" data-scene="0">
+              <div class="font-mono text-[10px] text-white/80 font-bold">SCENE 01</div>
               <div class="font-sans font-bold text-xs uppercase mt-1">MONAD LAUNCH</div>
             </button>
-            <button class="scene-tab-btn text-left p-3 rounded-lg border border-white/10 hover:border-[#E11D48] bg-white/5 transition-all text-white" data-scene="1">
-              <div class="font-mono text-[10px] text-white/70 font-bold">SCENE 02</div>
+            <button class="scene-tab-btn text-left p-3 rounded-lg border border-white/20 hover:border-[#D31419] bg-white/10 transition-all text-white" data-scene="1">
+              <div class="font-mono text-[10px] text-white/80 font-bold">SCENE 02</div>
               <div class="font-sans font-bold text-xs uppercase mt-1">NETWORK FLOW</div>
             </button>
-            <button class="scene-tab-btn text-left p-3 rounded-lg border border-white/10 hover:border-[#E11D48] bg-white/5 transition-all text-white" data-scene="2">
-              <div class="font-mono text-[10px] text-white/70 font-bold">SCENE 03</div>
+            <button class="scene-tab-btn text-left p-3 rounded-lg border border-white/20 hover:border-[#D31419] bg-white/10 transition-all text-white" data-scene="2">
+              <div class="font-mono text-[10px] text-white/80 font-bold">SCENE 03</div>
               <div class="font-sans font-bold text-xs uppercase mt-1">MINDSHARE SURGE</div>
             </button>
-            <button class="scene-tab-btn text-left p-3 rounded-lg border border-white/10 hover:border-[#E11D48] bg-white/5 transition-all text-white" data-scene="3">
-              <div class="font-mono text-[10px] text-white/70 font-bold">SCENE 04</div>
+            <button class="scene-tab-btn text-left p-3 rounded-lg border border-white/20 hover:border-[#D31419] bg-white/10 transition-all text-white" data-scene="3">
+              <div class="font-mono text-[10px] text-white/80 font-bold">SCENE 04</div>
               <div class="font-sans font-bold text-xs uppercase mt-1">SENTINEL ENGINE</div>
             </button>
           </div>
@@ -679,30 +741,30 @@
     <!-- ==========================================================================
          08. ABOUT & LEADERSHIP MANIFESTO (EXACT SWISS LAYOUT FROM REFERENCE IMAGE 1)
          ========================================================================== -->
-    <section id="about" class="py-16 sm:py-24 border-b border-[#0A0D14]/10 bg-white">
+    <section id="about" class="py-16 sm:py-24 border-b-2 border-[#0A0A0A] bg-[#F4EFE6]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
           <!-- Left: Editorial Manifesto Quote & Signature (Reference Image 1) -->
           <div class="lg:col-span-5">
-            <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#E11D48] block mb-3">ABOUT ME</span>
-            <h2 class="font-bebas text-4xl sm:text-5xl lg:text-6xl text-[#0A0D14] leading-[0.95] uppercase">
+            <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#D31419] block mb-3">ABOUT ME</span>
+            <h2 class="font-bebas text-4xl sm:text-5xl lg:text-6xl text-[#0A0A0A] leading-[0.95] uppercase">
               DESIGN IS SOLVING PROBLEMS WITH EMPATHY AND CREATIVITY.
             </h2>
-            <p class="text-sm text-[#0A0D14]/75 leading-relaxed mt-5 font-normal">
+            <p class="text-sm text-[#0A0A0A]/80 leading-relaxed mt-5 font-normal">
               I'm Nadim Nabil, a Web3 content creator, community builder, growth-focused marketer, and creative media producer from Bangladesh. Currently pursuing a Bachelor's degree in Textile Engineering at Southeast University while driving international protocol marketing campaigns.
             </p>
-            <p class="text-sm text-[#0A0D14]/75 leading-relaxed mt-3 font-normal">
+            <p class="text-sm text-[#0A0A0A]/80 leading-relaxed mt-3 font-normal">
               I partner with brands and blockchain foundations to turn complex technical architectures into compelling visual stories that inspire active participation.
             </p>
             
-            <!-- Handwritten Signature Placeholder -->
-            <div class="mt-8 pt-6 border-t border-[#0A0D14]/10">
-              <div class="font-serif italic text-3xl text-[#0A0D14] tracking-wide">
+            <!-- Handwritten Signature -->
+            <div class="mt-8 pt-6 border-t-2 border-[#0A0A0A]/20">
+              <div class="font-serif italic text-3xl text-[#0A0A0A] tracking-wide">
                 Al Nadim Nabil
               </div>
-              <div class="font-mono text-[10px] text-[#0A0D14]/50 uppercase tracking-widest mt-1">
+              <div class="font-mono text-[10px] text-[#0A0A0A]/60 uppercase tracking-widest mt-1 font-bold">
                 EXECUTIVE SIGNATURE // VERIFIED GROWTH PARTNER
               </div>
             </div>
@@ -712,9 +774,9 @@
           <div class="lg:col-span-3 flex justify-center">
             <div class="relative w-48 sm:w-56">
               <!-- Red geometric block -->
-              <div class="absolute top-0 right-0 w-4/5 h-full bg-[#E11D48] -z-10"></div>
+              <div class="absolute top-0 right-0 w-4/5 h-full bg-[#D31419] -z-10"></div>
               <!-- Portrait image -->
-              <img src="nadim_headshot.jpg" alt="Al Nadim Nabil" class="w-full h-auto object-cover border-2 border-[#0A0D14] shadow-xl grayscale contrast-110">
+              <img src="nadim_headshot.jpg" alt="Al Nadim Nabil" class="w-full h-auto object-cover border-3 border-[#0A0A0A] shadow-[6px_6px_0px_#0A0A0A] grayscale contrast-110">
             </div>
           </div>
 
@@ -725,9 +787,9 @@
             <div>
               <div class="flex justify-between font-mono text-xs font-bold uppercase mb-2">
                 <span>WEB3 GROWTH STRATEGY</span>
-                <span class="text-[#E11D48]">95%</span>
+                <span class="text-[#D31419]">95%</span>
               </div>
-              <div class="w-full h-2 bg-[#0A0D14]/10 rounded-full overflow-hidden">
+              <div class="w-full h-2.5 bg-[#0A0A0A]/10 rounded-full overflow-hidden border border-[#0A0A0A]/20">
                 <div class="skill-bar-fill w-[95%]"></div>
               </div>
             </div>
@@ -736,9 +798,9 @@
             <div>
               <div class="flex justify-between font-mono text-xs font-bold uppercase mb-2">
                 <span>CREATIVE VIDEO & MOTION</span>
-                <span class="text-[#E11D48]">92%</span>
+                <span class="text-[#D31419]">92%</span>
               </div>
-              <div class="w-full h-2 bg-[#0A0D14]/10 rounded-full overflow-hidden">
+              <div class="w-full h-2.5 bg-[#0A0A0A]/10 rounded-full overflow-hidden border border-[#0A0A0A]/20">
                 <div class="skill-bar-fill w-[92%]"></div>
               </div>
             </div>
@@ -747,9 +809,9 @@
             <div>
               <div class="flex justify-between font-mono text-xs font-bold uppercase mb-2">
                 <span>COMMUNITY ARCHITECTURE</span>
-                <span class="text-[#E11D48]">90%</span>
+                <span class="text-[#D31419]">90%</span>
               </div>
-              <div class="w-full h-2 bg-[#0A0D14]/10 rounded-full overflow-hidden">
+              <div class="w-full h-2.5 bg-[#0A0A0A]/10 rounded-full overflow-hidden border border-[#0A0A0A]/20">
                 <div class="skill-bar-fill w-[90%]"></div>
               </div>
             </div>
@@ -758,15 +820,15 @@
             <div>
               <div class="flex justify-between font-mono text-xs font-bold uppercase mb-2">
                 <span>ECOSYSTEM BD & OUTREACH</span>
-                <span class="text-[#E11D48]">88%</span>
+                <span class="text-[#D31419]">88%</span>
               </div>
-              <div class="w-full h-2 bg-[#0A0D14]/10 rounded-full overflow-hidden">
+              <div class="w-full h-2.5 bg-[#0A0A0A]/10 rounded-full overflow-hidden border border-[#0A0A0A]/20">
                 <div class="skill-bar-fill w-[88%]"></div>
               </div>
             </div>
 
             <div class="pt-4">
-              <a href="#contact" class="w-full flex items-center justify-center gap-2 py-3 rounded-full border-2 border-[#0A0D14] text-[#0A0D14] font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#0A0D14] hover:text-white transition-all">
+              <a href="#contact" class="w-full flex items-center justify-center gap-2 py-3 rounded-full border-2 border-[#0A0A0A] bg-[#FAF6EF] text-[#0A0A0A] font-mono text-xs font-bold uppercase tracking-wider hover:bg-[#0A0A0A] hover:text-white shadow-[3px_3px_0px_#0A0A0A] transition-all">
                 <span>VERIFY CREDENTIALS & AUDIENCE</span>
                 <span class="text-sm">⤓</span>
               </a>
@@ -782,26 +844,26 @@
     <!-- ==========================================================================
          09. TRUSTED ECOSYSTEMS MARQUEE (FROM REFERENCE IMAGE 1)
          ========================================================================== -->
-    <section class="py-8 bg-[#F8FAFC] border-b border-[#0A0D14]/10 overflow-hidden">
+    <section class="py-8 bg-[#FAF6EF] border-b-2 border-[#0A0A0A] overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-6">
-        <div class="font-mono text-xs font-black uppercase tracking-widest text-[#E11D48] whitespace-nowrap">
+        <div class="font-mono text-xs font-black uppercase tracking-widest text-[#D31419] whitespace-nowrap">
           TRUSTED BY
         </div>
         <div class="w-full overflow-hidden">
-          <div class="flex items-center justify-around flex-wrap gap-6 font-bebas text-2xl sm:text-3xl text-[#0A0D14]/70 tracking-wider uppercase">
-            <span class="hover:text-[#0A0D14] transition-colors">MONAD</span>
-            <span class="text-[#0A0D14]/20">•</span>
-            <span class="hover:text-[#0A0D14] transition-colors">INJECTIVE</span>
-            <span class="text-[#0A0D14]/20">•</span>
-            <span class="hover:text-[#0A0D14] transition-colors">EXSAT</span>
-            <span class="text-[#0A0D14]/20">•</span>
-            <span class="hover:text-[#0A0D14] transition-colors">BLUWHALE</span>
-            <span class="text-[#0A0D14]/20">•</span>
-            <span class="hover:text-[#0A0D14] transition-colors">KAITO</span>
-            <span class="text-[#0A0D14]/20">•</span>
-            <span class="hover:text-[#0A0D14] transition-colors">TRIA</span>
-            <span class="text-[#0A0D14]/20">•</span>
-            <span class="hover:text-[#0A0D14] transition-colors">RIVER</span>
+          <div class="flex items-center justify-around flex-wrap gap-6 font-bebas text-2xl sm:text-3xl text-[#0A0A0A]/80 tracking-wider uppercase">
+            <span class="hover:text-[#0A0A0A] transition-colors">MONAD</span>
+            <span class="text-[#0A0A0A]/30">•</span>
+            <span class="hover:text-[#0A0A0A] transition-colors">INJECTIVE</span>
+            <span class="text-[#0A0A0A]/30">•</span>
+            <span class="hover:text-[#0A0A0A] transition-colors">EXSAT</span>
+            <span class="text-[#0A0A0A]/30">•</span>
+            <span class="hover:text-[#0A0A0A] transition-colors">BLUWHALE</span>
+            <span class="text-[#0A0A0A]/30">•</span>
+            <span class="hover:text-[#0A0A0A] transition-colors">KAITO</span>
+            <span class="text-[#0A0A0A]/30">•</span>
+            <span class="hover:text-[#0A0A0A] transition-colors">TRIA</span>
+            <span class="text-[#0A0A0A]/30">•</span>
+            <span class="hover:text-[#0A0A0A] transition-colors">RIVER</span>
           </div>
         </div>
       </div>
@@ -810,56 +872,56 @@
     <!-- ==========================================================================
          10. HIGH-IMPACT EDITORIAL RED CTA BANNER (FROM REFERENCE IMAGE 1)
          ========================================================================== -->
-    <section id="contact" class="py-16 sm:py-24 bg-white">
+    <section id="contact" class="py-16 sm:py-24 bg-[#F4EFE6]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <!-- Giant Red Banner -->
-        <div class="bg-[#E11D48] text-white p-8 sm:p-14 rounded-2xl border-3 border-[#0A0D14] shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
+        <div class="bg-[#D31419] text-white p-8 sm:p-14 rounded-3xl border-4 border-[#0A0A0A] shadow-[10px_10px_0px_#0A0A0A] flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
             <h2 class="font-bebas text-6xl sm:text-7xl lg:text-8xl tracking-tight leading-[0.88] text-white uppercase">
               LET'S CREATE<br>
               SOMETHING GREAT<br>
               TOGETHER.
             </h2>
-            <p class="font-sans text-white/90 text-sm sm:text-base mt-4 max-w-lg font-medium">
+            <p class="font-sans text-white/95 text-sm sm:text-base mt-4 max-w-lg font-medium">
               Available for full-time protocol growth leadership, advisory retainers, and high-impact media production campaigns.
             </p>
           </div>
 
           <!-- Large Circular Arrow Button (Reference Image 1) -->
           <div>
-            <a href="mailto:nadimskip035@gmail.com" class="circular-cta-btn border-2 border-[#0A0D14] shadow-lg" title="Send Direct Email Inquiry">
+            <a href="mailto:nadimskip035@gmail.com" class="circular-cta-btn" title="Send Direct Email Inquiry">
               ↗
             </a>
           </div>
         </div>
 
         <!-- Inverted Contact Detail Grid (Directly Below Red Banner in Image 1) -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 pt-8 border-t-2 border-[#0A0D14]">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 pt-8 border-t-2 border-[#0A0A0A]">
           
           <div>
-            <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#E11D48] block mb-2">GET IN TOUCH</span>
-            <a href="mailto:nadimskip035@gmail.com" class="font-sans font-bold text-sm text-[#0A0D14] hover:text-[#E11D48] block transition-colors">
+            <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#D31419] block mb-2">GET IN TOUCH</span>
+            <a href="mailto:nadimskip035@gmail.com" class="font-sans font-bold text-sm text-[#0A0A0A] hover:text-[#D31419] block transition-colors">
               nadimskip035@gmail.com
             </a>
-            <span class="font-mono text-xs text-[#0A0D14]/60 block mt-1">Dhaka, Bangladesh · Operating Worldwide</span>
+            <span class="font-mono text-xs text-[#0A0A0A]/70 block mt-1">Dhaka, Bangladesh · Operating Worldwide</span>
           </div>
 
           <div>
-            <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#E11D48] block mb-2">COMMUNITY DIRECT</span>
-            <a href="https://t.me/Nabil_vai!!" target="_blank" rel="noopener noreferrer" class="font-sans font-bold text-sm text-[#0A0D14] hover:text-[#E11D48] block transition-colors">
+            <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#D31419] block mb-2">COMMUNITY DIRECT</span>
+            <a href="https://t.me/Nabil_vai!!" target="_blank" rel="noopener noreferrer" class="font-sans font-bold text-sm text-[#0A0A0A] hover:text-[#D31419] block transition-colors">
               Telegram: @Nabil_vai!!
             </a>
-            <span class="font-sans text-xs text-[#0A0D14]/70 block mt-1">Discord: nabilk007</span>
+            <span class="font-sans text-xs text-[#0A0A0A]/80 block mt-1">Discord: nabilk007</span>
           </div>
 
           <div>
-            <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#E11D48] block mb-2">FOLLOW & VERIFY</span>
-            <div class="flex items-center gap-4 text-xs font-mono font-bold text-[#0A0D14]">
-              <a href="https://x.com/Al_Nadim_nabil" target="_blank" rel="noopener noreferrer" class="hover:text-[#E11D48] transition-colors">X (TWITTER) ↗</a>
-              <a href="https://github.com/ixmaruf/nadim-portfolio" target="_blank" rel="noopener noreferrer" class="hover:text-[#E11D48] transition-colors">GITHUB ↗</a>
+            <span class="font-mono text-xs font-bold uppercase tracking-widest text-[#D31419] block mb-2">FOLLOW & VERIFY</span>
+            <div class="flex items-center gap-4 text-xs font-mono font-bold text-[#0A0A0A]">
+              <a href="https://x.com/Al_Nadim_nabil" target="_blank" rel="noopener noreferrer" class="hover:text-[#D31419] transition-colors">X (TWITTER) ↗</a>
+              <a href="https://github.com/ixmaruf/nadim-portfolio" target="_blank" rel="noopener noreferrer" class="hover:text-[#D31419] transition-colors">GITHUB ↗</a>
             </div>
-            <span class="font-mono text-[11px] text-[#0A0D14]/60 block mt-1">8,000+ Active Audience Network</span>
+            <span class="font-mono text-[11px] text-[#0A0A0A]/70 block mt-1 font-semibold">8,000+ Active Audience Network</span>
           </div>
 
         </div>
@@ -872,27 +934,27 @@
   <!-- ==========================================================================
        11. COLOPHON FOOTER WITH AUTHENTIC MARUFIX.XYZ ATTRIBUTION
        ========================================================================== -->
-  <footer class="bg-[#F8FAFC] border-t-2 border-[#0A0D14] py-8 text-[#0A0D14]">
+  <footer class="bg-[#F4EFE6] border-t-2 border-[#0A0A0A] py-8 text-[#0A0A0A]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
       
       <!-- Built by marufix.xyz Badge (User Request) -->
       <div class="flex items-center gap-3.5">
-        <div class="relative w-10 h-10 rounded-full border-2 border-[#0A0D14] overflow-hidden flex-shrink-0 shadow-sm">
+        <div class="relative w-10 h-10 rounded-full border-2 border-[#0A0A0A] overflow-hidden flex-shrink-0 shadow-sm bg-white">
           <img src="maruf_profile.webp" alt="Maruf Hasan" class="w-full h-full object-cover">
           <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-[#84CC16] border border-white"></span>
         </div>
         <div>
-          <span class="block font-mono text-xs font-bold tracking-wider text-[#0A0D14]">
-            BUILT BY <a href="https://marufix.xyz" target="_blank" rel="noopener noreferrer" class="text-[#E11D48] hover:underline font-black">MARUFIX.XYZ</a>
+          <span class="block font-mono text-xs font-bold tracking-wider text-[#0A0A0A]">
+            BUILT BY <a href="https://marufix.xyz" target="_blank" rel="noopener noreferrer" class="text-[#D31419] hover:underline font-black">MARUFIX.XYZ</a>
           </span>
-          <span class="block font-mono text-[10px] text-[#0A0D14]/60">
+          <span class="block font-mono text-[10px] text-[#0A0A0A]/70 font-semibold">
             Crafted for Al Nadim Nabil · Web3 Growth Architect
           </span>
         </div>
       </div>
 
       <!-- Copyright Notice -->
-      <div class="text-center md:text-right font-mono text-[11px] text-[#0A0D14]/60">
+      <div class="text-center md:text-right font-mono text-[11px] text-[#0A0A0A]/70 font-semibold">
         <div>© 2026 AL NADIM NABIL. ALL RIGHTS RESERVED.</div>
         <div>SWISS EDITORIAL × JAPANESE MANGA EDITION.</div>
       </div>
@@ -901,6 +963,6 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="script.js?v=25"></script>
+  <script src="script.js?v=27"></script>
 </body>
 </html>
