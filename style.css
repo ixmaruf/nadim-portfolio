@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Syne:wght@700;800;900&display=swap');
 
 /* Hero Immediate Visibility Guarantee (Zero Above-The-Fold Opacity Lag) */
 #hero .reveal-init,
@@ -758,3 +759,133 @@ body::before {
   min-height: 200px !important;
 }
 
+
+
+/* ==========================================================================
+   SWISS EDITORIAL NEWSPAPER & JAPANESE MANGA DESIGN SYSTEM EXTENSIONS
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Syne:wght@700;800;900&display=swap');
+
+:root {
+  --color-pearl: #F8FAFC;
+  --color-white: #FFFFFF;
+  --color-obsidian: #0A0D14;
+  --color-crimson: #E11D48; /* Editorial Swiss Red */
+  --color-red: #E11D48;
+  --color-red-dark: #BE123C;
+  --color-lime: #84CC16; /* Anime Manga Lime Green */
+  --color-cobalt: #2563EB;
+  --font-bebas: 'Bebas Neue', 'Syne', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-syne: 'Syne', sans-serif;
+}
+
+/* Editorial Bebas Neue typography */
+.font-bebas {
+  font-family: var(--font-bebas) !important;
+  letter-spacing: 0.03em !important;
+}
+
+/* Editorial Crimson & Lime Utilities */
+.bg-crimson { background-color: #E11D48 !important; }
+.text-crimson { color: #E11D48 !important; }
+.border-crimson { border-color: #E11D48 !important; }
+.bg-crimson-dark { background-color: #BE123C !important; }
+.hover\:bg-crimson-dark:hover { background-color: #BE123C !important; }
+.hover\:bg-crimson:hover { background-color: #E11D48 !important; }
+.hover\:text-crimson:hover { color: #E11D48 !important; }
+
+.bg-lime { background-color: #84CC16 !important; }
+.text-lime { color: #84CC16 !important; }
+.border-lime { border-color: #84CC16 !important; }
+.hover\:border-lime:hover { border-color: #84CC16 !important; }
+
+/* Rotating Circular Stamp Seal */
+@keyframes spinStamp {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.spin-stamp {
+  animation: spinStamp 24s linear infinite;
+}
+.spin-stamp:hover {
+  animation-play-state: paused;
+}
+
+/* Hairline Grid & Editorial Borders */
+.border-editorial {
+  border: 1px solid rgba(10, 13, 20, 0.12) !important;
+}
+.border-editorial-dark {
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Editorial Portrait Stage */
+.editorial-portrait-stage {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.editorial-red-backdrop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 82%;
+  height: 94%;
+  background-color: #E11D48;
+  z-index: 1;
+}
+
+/* Services Solid Red Box */
+.services-red-block {
+  background-color: #E11D48;
+  color: #FFFFFF;
+}
+
+/* Manga Hazard Tape & Anime Card */
+.hazard-tape {
+  background: repeating-linear-gradient(
+    -45deg,
+    #84CC16,
+    #84CC16 10px,
+    #0A0D14 10px,
+    #0A0D14 20px
+  );
+}
+
+.cyber-dots {
+  background-image: radial-gradient(rgba(10, 13, 20, 0.15) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Editorial High-Impact CTA Banner */
+.editorial-cta-banner {
+  background-color: #E11D48;
+  color: #FFFFFF;
+}
+
+.circular-cta-btn {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  color: #0A0D14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.25rem;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+.circular-cta-btn:hover {
+  transform: scale(1.08) rotate(45deg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Skill Progress Bars */
+.skill-bar-fill {
+  background-color: #E11D48;
+  height: 6px;
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
