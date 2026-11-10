@@ -354,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const mascotTrigger = document.getElementById('mascotInteractiveTrigger');
 
   const telemetryQuotes = [
-    "Protocol mindshare scan: 100% active. 8,000+ targeted audience verified.",
+    "Protocol mindshare scan: 100% active. 11,000+ targeted audience verified.",
     "Injective, exSat, Bluwhale & Tria ecosystem telemetry: Optimal.",
     "KOL distribution matrix: Verified 3.8M+ impressions delivered.",
     "4K cinematic motion graphics & high-signal threads ready for deployment.",
@@ -1190,7 +1190,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       sCtx.font = '700 20px "JetBrains Mono", monospace';
       sCtx.fillStyle = '#D31419';
-      sCtx.fillText("3.8M+ VERIFIED VIEWS • 8K+ DEDICATED X AUDIENCE", vW - 140, 150);
+      sCtx.fillText("3.8M+ VERIFIED VIEWS • 11K+ DEDICATED X AUDIENCE", vW - 140, 150);
     }
 
     // Image Sprite for Owl Sentinel in Scene 4
